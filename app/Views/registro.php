@@ -70,7 +70,7 @@
     <link href="../css/style.css" rel="stylesheet">
     
 </head>
-<body class="bg-info" style= "height: 1000px; width: 100%">
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
 <style>
 		.alerta {
 			background-color: #f2dede;
@@ -93,7 +93,7 @@
         #registrar {
             border-radius: 20px;
             color:white;
-            background-color: green  ;
+            background-color: #0063c2  ;
             width: 75px; 
             height: 40px;
             font-size: 13px;
@@ -101,19 +101,24 @@
             margin-bottom:10%;
         }
         #registrar:hover{
-            border: 2px solid green; 
-            color: green; 
+            border: 2px solid blue; 
+            color: blue; 
             background-color:white;
             border-radius: 20px;
         }
     </style>
   <div>
-  <nav  style="background-color:black;" class="hunix-login">
+  <nav  style="background-color:#003B5C;" class="hunix-login">
     <div class="container-fluid">
       <div class="navbar-header">
-          <header >
+      <header>
+        <div style= "height: 50px; width: 100%; text-align: center;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
+        </div>
+      </header>
+          <!-- <header >
       <a><h1 style="color:white; margin-left:15px; font-weight:bolder; text-align: center">BUAP</h1></a>
-    </header>
+    </header> -->
       </div>
   
     <div>
@@ -123,10 +128,10 @@
     </div>
   </nav>
 
-  <div class="login-box">
+  <div class="login-box" >
       
       <div class="login-logo">
-          <b>Regístrate aquí</b>
+          <b style="color:white; font-weight: bold;">Regístrate aquí</b>
       </div>
       <?php if (session()->has('success')): ?>
   <div class="alert alert-warning" style="text-align: center;"><?= session('success') ?></div>

@@ -67,7 +67,7 @@
     <link href="../css/lib/helper.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body class="bg-primary" style= "height: auto; width: 100%">
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
 <style>
         #login {
             border-radius: 20px;
@@ -100,16 +100,16 @@
         }
     </style>
 <div>
-    <nav  style="background-color:black;" class="hunix-login">
+    <nav  style="background-color:#003B5C;" class="hunix-login">
       <div class="container-fluid">
         <div class="navbar-header">
             <header>
-        <div style= "height: 85px; width: 85px; text-align: center;">
-            <img src="../img/Escudo_BUAP_Negativo.png"  width="100%" length="100%" >
+        <div style= "height: 50px; width: 100%; text-align: center;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
         </div>
-        <div style="text-align: center;">
+        <!-- <div style="text-align: center;">
             <h1 style="color:white; font-weight:bolder;">BUAP</h1>
-        </div>
+        </div> -->
       </header>
         </div>
         
@@ -119,7 +119,7 @@
     <div class="login-box ">
         
         <div class="login-logo">
-            <b>Bienvenido</b>
+            <b style="color:white; font-weight: bold;">Bienvenido</b>
         </div>  
 
         <div id="alerta_pass" style="display: flex; background-color: orange; flex-direction: column; font-weight: bold; align-items: center;">
@@ -127,7 +127,7 @@
 </div>
 
         <!-- /.login-logo -->
-        <div class="login-form">
+        <div class="login-form" style="border-radius: 20px;">
             <h2 class="login-box-msg">Iniciar Sesión</h2>
             
             <!-- start display error message -->
