@@ -164,7 +164,7 @@
                     </div>
                 </div>
             </form>
-            <p>No tienes cuenta? <a href="registro" style="font-weight:bolder; color:blue;">Registrate aquí</a></p>
+            <p>¿No tienes cuenta? <a href="registro" style="font-weight:bolder; color:blue;">Registrate aquí</a></p>
         </div>
 
 
