@@ -21,7 +21,7 @@ class UserModel extends Model{
         $session = session();
         $matri = $session->get("matricula");
         $builder = $this->db->table('usuario');
-        $builder->select('usuario.*, usuario.matricula, usuario_capacitacion.fecha_fin_capacitacion, usuario_capacitacion.fecha_inicio_capacitacion, 
+        $builder->select('usuario.*, usuario.matricula, usuario_capacitacion.fecha_fin_capacitacion, usuario_capacitacion.tiempo_valido_capacitacion, 
         capacitacion.nombre_capacitacion, capacitacion.duracion_capacitacion, capacitacion.nombre_instructor');
         $builder->join('usuario_capacitacion', 'usuario.id_usuario = usuario_capacitacion.id_usuario');
         $builder->join('capacitacion', 'usuario_capacitacion.id_capacitacion = capacitacion.id_capacitacion');

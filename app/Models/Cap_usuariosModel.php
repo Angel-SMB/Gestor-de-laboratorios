@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class Cap_usuariosModel extends Model{
     protected $table      = 'usuario_capacitacion';
      protected $primaryKey = ' id_usuario_capacitacion';
-     protected $allowedFields = ['fecha_inicio_capacitacion','fecha_fin_capacitacion','id_usuario','id_capacitacion'];
+     protected $allowedFields = ['fecha_fin_capacitacion', 'tiempo_valido_capacitacion','id_usuario','id_capacitacion'];
 
      public function datos_usuarios(){
         $builder = $this->db->table('usuario_capacitacion');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2023 a las 07:43:20
+-- Tiempo de generación: 16-05-2023 a las 22:52:58
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -95,10 +95,11 @@ CREATE TABLE `equipo` (
 
 INSERT INTO `equipo` (`id_equipo`, `nombre_equipo`, `marca_equipo`, `modelo_equipo`, `tipo_equipo`, `descripcion_equipo`, `riesgo_equipo`, `id_laboratorio`) VALUES
 (1, 'Computadora', 'Dell', 'DDR4', 'Equipo de computo', 'Equipo con monitor, pantalla y mouse.', 'Bajo', 1),
-(2, 'Cortadora laser', 'Sculpfun', 'S9', 'Maquina ed grabado', 'Cortadora laser de alta precisión', 'Alto', 1),
+(2, 'Cortadora laser', 'Sculpfun', 'S9', 'Maquina de grabado', 'Cortadora laser de alta precisión', 'Alto', 1),
 (3, 'Pistola de soldadura', 'Brave', 'BVSLD-01', 'Soldadura', 'Pistola para soldar', 'Medio', 2),
 (4, 'Computadora', 'HP', 'HP-465', 'Equipo de computo', 'Computadora de escritorio, con 8 GB de RAM, 1 TB de disco duro y un procesador Intel i3 de 11° Gen.', 'Bajo', 4),
-(5, 'Laptop', 'Lenovo', 'C20-00', 'Computo', 'Equipo portatil de computo', 'Bajo', 3);
+(5, 'Laptop', 'Lenovo', 'C20-00', 'Computo', 'Equipo portatil de computo', 'Bajo', 3),
+(6, 'Ninguno', '.', '.', '.', '.', '.', 1);
 
 -- --------------------------------------------------------
 
@@ -142,10 +143,10 @@ CREATE TABLE `laboratorio` (
 --
 
 INSERT INTO `laboratorio` (`id_laboratorio`, `nombre_laboratorio`, `ubicacion_laboratorio`, `nombre_responsable`, `observacion_laboratorio`, `tipo_laboratorio`, `estado_laboratorio`) VALUES
-(1, 'Computo básico', 'Chiapa 2 #224', 'Luis Martinez', 'Ninguna', 'Computo', 'Excelente'),
-(2, 'Computo intermedio', 'Chiapa 2 #226', 'Luis Martinez', 'Ninguna', 'Computo', 'Excelente'),
-(3, 'Makers', 'Chiapa 2 #229', 'Luis Martinez', 'Ninguna', 'Impresiones 3D', 'Excelente'),
-(4, 'Laboratorio Avanzado', 'Chiapa 2 #227', 'Luis Martinez', 'Ninguna', 'Soldadura', 'Excelente');
+(1, 'Cómputo básico', 'Chiapa 2 #224', 'Luis Martínez', 'Ninguna', 'Cómputo', 'Excelente'),
+(2, 'Cómputo intermedio', 'Chiapa 2 #226', 'Luis Martínez', 'Ninguna', 'Cómputo', 'Excelente'),
+(3, 'Makers', 'Chiapa 2 #229', 'Luis Martínez', 'Ninguna', 'Impresiones 3D', 'Excelente'),
+(4, 'Laboratorio avanzado', 'Chiapa 2 #227', 'Luis Martínez', 'Ninguna', 'Soldadura', 'Excelente');
 
 -- --------------------------------------------------------
 
@@ -169,7 +170,15 @@ CREATE TABLE `prestamo` (
 --
 
 INSERT INTO `prestamo` (`id_prestamo`, `fecha_prestamo`, `hora_inicio_prestamo`, `hora_fin_prestamo`, `observacion_prestamo`, `id_laboratorio`, `id_equipo`, `id_usuario`) VALUES
-(1, '2023-05-08', '08:00:00', '10:00:00', '', 1, 1, 8);
+(1, '2023-05-08', '08:00:00', '10:00:00', '', 1, 1, 8),
+(2, '2023-05-17', '08:00:00', '10:00:00', 'Ninguna', 4, 4, 8),
+(3, '2023-05-15', '10:00:00', '12:00:00', 'Encontre un equipo dañado', 2, 4, 8),
+(4, '2023-05-18', '10:00:00', '09:00:00', '', 1, 1, 12),
+(5, '2023-05-18', '08:24:00', '09:00:00', '', 4, 1, 1),
+(6, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 12),
+(7, '2023-05-15', '12:12:00', '12:12:00', '', 1, 4, 8),
+(8, '2023-05-17', '12:12:00', '12:12:00', '', 3, 6, 8),
+(9, '2023-05-01', '12:12:00', '12:12:00', 'w', 2, 6, 8);
 
 -- --------------------------------------------------------
 
@@ -196,12 +205,14 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `matricula`, `nombre_usuario`, `apellidos_usuario`, `correo_usuario`, `telefono_usuario`, `password_usuario`, `nss_usuario`, `id_carrera`, `rol`) VALUES
 (1, '202267533', 'Diego Angel', 'San Martín Gómez', 'diego.sanmarting@alumno.buap.mx', '2212535186', '$2y$10$3UkjMwW3alhq4zXe90ypaeaJYPFlsHktmDzLe/lvNH8z.deKaOj1K', '9489561', 1, '0'),
-(2, '202223895', 'Ernesto', 'Hernández Velázquez', 'ernesto@ernesto', '2221356846', '1234', '99984163', 1, '1'),
+(2, '202223895', 'Ernesto', 'Hernández Velázquez', 'ernestoH@ernesto', '221321564', '$2y$10$Peppfrhd.SL/u1di89i22eo9ykHlgSVgV4mgIK6TW4QiVPYOpD7Hq', '89465156', 1, '2'),
 (3, '202244929', 'Diana Sandra', 'Morales García', 'diana@diana', '2221356456', '1234', '99987863', 1, '3'),
 (4, '202224664', 'Ernesto', 'Arroyo Reyes', 'ernestoA@ernestoA', '222135786', '1234', '99984743', 1, '3'),
 (5, '202253071', 'María Zacil', 'Sánchez Juárez', 'Zacil@zacil', '221595644', '1234', '99987383', 1, '2'),
 (6, '202238868', 'David', 'Flores Jerónimo', 'david@david', '222139846', '1234', '99936163', 2, '2'),
-(8, '201907831', 'Diego', 'San Martin', 'diego.sanmartin@alumno.buap', '2221568798', '$2y$10$M/1I9RHTK92w9544FaIsBudTD3thuE/IMbLTongykintRokRlTOOy', '98765435', 1, '3');
+(10, 'admin', 'Admin', 'istrador', 'admin@admin', '2212515687', '$2y$10$5MfDmQruug30BivgM76JCeuX2Ri9z.ZZAjj9iINpUsK.SkxHinfSG', '', 1, '0'),
+(11, 'Encargado', 'Encargado', 'prueba', 'encargado@prueba', '2212558694', '$2y$10$H783uSp8NfIz52GImtCwxuHKi8FGgX.yp9haPDOp1uf2HJoaDPdOm', '', 1, '1'),
+(12, 'NSS529640', 'Diana Ivone', 'Tapia López', 'ivone.tapia@correo.buap.mx', '2224860704', '$2y$10$uJirFZxDnf8J1Tt2CD4H7uoA0kH5LK/NA80hoDs6l54QWeFdFMwf2', '8745634', 1, '2');
 
 -- --------------------------------------------------------
 
@@ -211,8 +222,8 @@ INSERT INTO `usuario` (`id_usuario`, `matricula`, `nombre_usuario`, `apellidos_u
 
 CREATE TABLE `usuario_capacitacion` (
   `id_usuario_capacitacion` int(11) NOT NULL,
-  `fecha_inicio_capacitacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `fecha_fin_capacitacion` datetime NOT NULL,
+  `fecha_fin_capacitacion` date NOT NULL,
+  `tiempo_valido_capacitacion` int(3) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_capacitacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -221,11 +232,12 @@ CREATE TABLE `usuario_capacitacion` (
 -- Volcado de datos para la tabla `usuario_capacitacion`
 --
 
-INSERT INTO `usuario_capacitacion` (`id_usuario_capacitacion`, `fecha_inicio_capacitacion`, `fecha_fin_capacitacion`, `id_usuario`, `id_capacitacion`) VALUES
-(1, '2023-04-12 00:26:55', '2023-04-12 02:25:43', 5, 9),
-(2, '2023-04-12 00:27:11', '2023-04-12 02:25:43', 2, 4),
-(3, '2023-05-05 03:56:25', '2023-05-31 10:59:00', 3, 7),
-(4, '2023-05-05 20:01:07', '2023-05-26 00:00:00', 1, 7);
+INSERT INTO `usuario_capacitacion` (`id_usuario_capacitacion`, `fecha_fin_capacitacion`, `tiempo_valido_capacitacion`, `id_usuario`, `id_capacitacion`) VALUES
+(1, '2023-04-12', 1, 5, 9),
+(3, '2023-05-31', 8, 3, 7),
+(4, '2023-05-26', 2, 1, 7),
+(6, '2023-05-17', 3, 8, 2),
+(7, '2023-05-01', 2, 8, 10);
 
 --
 -- Índices para tablas volcadas
@@ -321,25 +333,25 @@ ALTER TABLE `equipo_capacitacion`
 -- AUTO_INCREMENT de la tabla `laboratorio`
 --
 ALTER TABLE `laboratorio`
-  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_capacitacion`
 --
 ALTER TABLE `usuario_capacitacion`
-  MODIFY `id_usuario_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

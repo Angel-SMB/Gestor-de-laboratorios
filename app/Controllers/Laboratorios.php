@@ -26,7 +26,7 @@ class Laboratorios extends Controller{
         $respuesta=$user->insert($datos);
         $session = session();
         $session->setFlashdata('success', 'El laboratorio ha sido creado con éxito.');
-        return view('registro_lab');
+        return redirect()->to(base_url('laboratorios'));
         }
 
     public function eliminar($id){

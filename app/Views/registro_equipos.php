@@ -83,23 +83,68 @@ $user = session();
 <?php
 if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol')== 1):
 ?>
-<body>
-  <div class="bg-dark" style= "height: 1000px; width: 100%">
-  <nav  style="background-color:black;" class="hunix-login">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <header >
-      <a><h1 style="color:white; margin-left:22%; font-weight:bolder;">BUAP</h1></a>
-    </header>
-      </div>
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
+
+<style>
+            #registrar {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: 75px; 
+            height: 40px;
+            font-size: 13px;
+            font-weight:bold;
+        }
+        #registrar:hover{
+            border: 2px solid blue; 
+            color: blue; 
+            background-color:white;
+            border-radius: 20px;
+        }
+        #atras {
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+             width: 60px; 
+            height: 35px;
+            font-size: 13px;
+            font-weight:bold;
+            border-radius:20px;
+        }
+        #atras:hover{
+            background-color:white;
+            color: #ff0000;
+            text-decoration: underline; 
+            border-radius:20px;
+        }
+        #salir {
+            border-radius: 5px;
+            color:white;
+        }
+        #salir:hover{
+            color: black; 
+        }
+    </style>
+  <nav  style="background-color:#003B5C;" class="hunix-login">
+  <div class="container-fluid">
+  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div style= "height: 50px; width: 100px;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
+        </div>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="text-align: center">
+<li ><a href="salir" id="salir"><span class="fa fa-sign-out"></span> Salir</a></li> 
+</ul>
+  </div>
   
-  </nav>
+</nav>
 
   <div class="login-box">
       
       <div class="login-logo">
-      
-          <b>Registrar nuevo equipo</b>
+      <b style="color:white; font-weight: bold;">Registrar nuevo equipo</b>
       </div>
 
 
@@ -110,38 +155,39 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <div class="login-box-body">
     <div class="form-group">
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre del equipo</label>
-            <input type="text" class="form form-control-user" name="eqNombre" >
+            <label class="col-sm-5 col-form-label ">Nombre del equipo<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="eqNombre" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Marca del equipo</label>
-            <input type="text" class="form form-control-user" name="eqMarca" >
+            <label class="col-sm-5 col-form-label ">Marca del equipo<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="eqMarca" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Modelo del equipo</label>
-            <input type="text" class="form form-control-user" name="eqModelo" >
+            <label class="col-sm-5 col-form-label ">Modelo del equipo<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="eqModelo" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Tipo de equipo</label>
-            <input type="text" class="form form-control-user" name="eqTipo">
+            <label class="col-sm-5 col-form-label ">Tipo de equipo<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="eqTipo" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Descripción</label>
-            <input type="text" class="form form-control-user"  name="eqDesc">
+            <label class="col-sm-5 col-form-label ">Descripción<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user"  name="eqDesc" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nivel de riesgo del equipo</label>
-            <input type="text" class="form form-control-user"  name="eqRiesgo">
+            <label class="col-sm-5 col-form-label ">Nivel de riesgo del equipo<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user"  name="eqRiesgo" required>
         </div><br>
         <div class="form-group">
-        <label class="col-sm-5 col-form-label ">Laboratorio en el que se ubica</label>
+        <label class="col-sm-5 col-form-label ">Laboratorio en el que se ubica<b style="color:orange;"> *</b></label>
             <select class="form-control selct2" type="number" name="eqLabid" required>
+            <option></option>
                 <?php foreach ($laboratorio as $laboratorios){
                 echo '<option value="'.$laboratorios['id_laboratorio'].'">'.$laboratorios['nombre_laboratorio'].'</option>';}; ?>
             </select>
         </div><br><br>
-        <input type="submit" class="btn btn-success btn-lg" value="Registrar">
-        <a href="<?= base_url('equipos'); ?>" class="btn btn-warning text-light text-bold btn-lg">Atras</a>
+        <input type="submit" id="registrar" value="Registrar">
+        <a href="<?= base_url('equipos'); ?>" class="btn btn-danger" id="atras">Atrás</a>
     </form>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-2.2.3.min.js"></script>

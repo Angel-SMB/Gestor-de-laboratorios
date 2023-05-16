@@ -46,6 +46,8 @@ $user = session();
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/lib/themify-icons.css" rel="stylesheet">
 
 <?php
 if($user->get('rol')==2 || $user->get('rol')== 3):
@@ -53,19 +55,37 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
 </head>
 
 <body class="hold-transition login-page" style="width:auto">
-
-<nav class="navbar navbar-inverse" style="width:auto;">
-  <div class="container-fluid" style="background-color: #001225 ">
-    <div class="navbar-header" style="margin: 0 auto; display: block;">
-    <a><h4 style="color:white; font-weight:bolder; text-align: center">BUAP</h4></a>
+<style>
+        #salir {
+            border-radius: 5px;
+            color:white;
+        }
+        #salir:hover{
+            color: black; 
+        }
+        #user {
+            border-radius: 5px;
+            color:white;
+        }
+        #user:hover{
+            color: black; 
+        }
+</style>
+<nav  style="background-color:#01a3b3 ;" class="hunix-login">
+  <div class="container-fluid" style="background-color: #003B5C ">
+  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div style= "height: 50px; width: 100px;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
+        </div>
     </div>
+
    
     <ul class="nav navbar-nav navbar-right" style="text-align: center">
-    <li><a href="alumno"><span class="glyphicon glyphicon-user"></span> <?=  $user->get('nombre_usuario') ?></a></li>
-     <li ><a href="salir"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li> 
+    <li><a href="alumno" id="user"><span class="fa fa-user"></span> <?=  $user->get('nombre_usuario') ?></a></li>
+     <li ><a href="salir" id="salir"><span class="fa fa-sign-out"></span> Salir</a></li> 
     </ul>
   </div>
-</nav>
+</nav><br>
 <!--55-->
 <div class="container">
     <div class="main-body">
@@ -85,7 +105,7 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
           <!-- /Breadcrumb -->
     
           <div class="row gutters-sm">
-            <div class="col-md-4 mb-3" style="background-color:rgba(147, 175, 173, .8); border-style: dotted;">
+            <div class="col-md-4 mb-3" style="background-color:rgba( 108, 164, 173 , .8); border-style: dotted;">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
@@ -137,8 +157,8 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
             <div class="col-md-8">
             
                 
-                                <div class="card mb-3">
-                <div class="card-body">
+                                <div class="card mb-3" style="text-align:center;">
+                <div class="card-body" style="background-color:rgba( 1, 163, 179  , .2); text-align:center;">
                   <div class="row">
                     <div class="col-sm-3">
                       <h5 class="mb-0" style="font-weight:bold;">Nombre Completo</h5>
@@ -204,16 +224,16 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
 
 <!-- Tabla de prestamos -->
               <div id="prestamos" class="collapse" style="text-align:center; width: 100%; ">
-              <div style="background-color:rgba( 246, 235, 214 , .8); border-style: double; ">
-                <h3 style="font-weight:bolder;">Tus préstamos</h3>
+              <div style="background-color:rgba( 0, 59, 92 , .2); border-style: double; ">
+                <h3 style="font-weight:bolder; color: white;">Tus préstamos</h3>
                 <div style=" width: 100%; overflow-x: auto;">
                 <table class="table table-bordered" style="background-color:white; width:100%; " cellspacing="0">
   <thead>
     <tr style="text-align: center; background-color: #e6e6e6; font-weight: bold;">
       <th style="text-align: center;">#</th>
       <th style="text-align: center;">Fecha de préstamos</th>
-      <th style="text-align: center;">Hora de fin</th>
       <th style="text-align: center;">Hora de inicio</th>
+      <th style="text-align: center;">Hora de fin</th>
       <th style="text-align: center;">Laboratorio</th>
       <th style="text-align: center;">Equipo</th>
       <th style="text-align: center;">Observaciones</th>
@@ -246,16 +266,16 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
 
 <!-- Tabla de capacitaciones -->
 <div id="capacitacion" class="collapse" style="text-align:center; max-width: 100%;">
-              <div style="background-color:rgba( 179, 219, 244 , .8); border-style: double; width: 100%; overflow-x: auto;">
-              <h3 style="font-weight:bolder; text-align: center;">Tus cursos</h3>
+              <div style="background-color:rgba( 0, 59, 92 , .2); border-style: double; width: 100%; overflow-x: auto;">
+              <h3 style="font-weight:bolder; color: white; text-align: center;">Tus cursos</h3>
               <div style=" width: 100%; overflow-x: auto;">
               <table class="table table-bordered" style="background-color:white; width: 100%; " cellspacing="0">
   <thead>
     <tr style="text-align: center; background-color: #e6e6e6; font-weight: bold;">
     <th style="text-align: center;">#</th>
       <th style="text-align: center;">Capacitación</th>
-      <th style="text-align: center;">Fecha de inicio</th>
       <th style="text-align: center;">Fecha de finalización</th>
+      <th style="text-align: center;">Tiempo valido</th>
       <th style="text-align: center;">Instructor</th>
     </tr>
   </thead>
@@ -265,8 +285,8 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
       <tr>
         <td><?= $contador?></td>
         <td><?= $capacitaciones  ->nombre_capacitacion;?></td>
-        <td><?= $capacitaciones  ->fecha_inicio_capacitacion;?></td>
         <td><?= $capacitaciones  ->fecha_fin_capacitacion;?></td>
+        <td><?= $capacitaciones  ->tiempo_valido_capacitacion?> semestre(s)</td>
         <td><?= $capacitaciones  ->nombre_instructor;?></td>
       </tr>
     <?php $contador = $contador+1;
@@ -283,7 +303,7 @@ body {
   text-align: center;
   font-size: 14px;
   font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
-  background-color: #17A2B8;
+  background-color:  #01a2b2 ;
   }
 
 #wrap {

@@ -116,7 +116,7 @@
       </div>
     </nav>
     
-    <div class="login-box ">
+    <div class="login-box">
         
         <div class="login-logo">
             <b style="color:white; font-weight: bold;">Bienvenido</b>

@@ -85,6 +85,24 @@ $user = session();
 if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol')== 1):
 ?>
 <body style="height: auto;">
+<style>
+            #registrar {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: 85px; 
+            height: 50px;
+            font-size: 15px;
+            font-weight:bold;
+            margin-bottom:10%;
+        }
+        #registrar:hover{
+            border: 2px solid blue; 
+            color: blue; 
+            background-color:white;
+            border-radius: 20px;
+        }
+</style>
 <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures" style=" height: 100%;">
             <div class="nano">
                 <div class="nano-content">
@@ -197,10 +215,9 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
                 }
             }?>
                         </div>
-                        <div style="background-color: #0075bf ">
-                        </div>
+
                         
-                        <div style="background-color: #0075bf; width:auto; height:auto"><br>
+                        <div style=" width:auto; height:auto"><br>
                         
   <div class="login-box" style="background-color:  #05407f  ">
   <div class="login-logo">
@@ -218,23 +235,23 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <div class="login-box-body">
     <div class="form-group">
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Matrícula/ID</label>
+            <label class="col-sm-5 col-form-label ">Matrícula/ID<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user text-dark" name="mat" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre</label>
+            <label class="col-sm-5 col-form-label ">Nombre<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="nom" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Apellidos</label>
+            <label class="col-sm-5 col-form-label ">Apellidos<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="ape" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Correo</label>
+            <label class="col-sm-5 col-form-label ">Correo<b style="color:orange;"> *</b></label>
             <input type="email" class="form form-control-user" name="corr" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Teléfono</label>
+            <label class="col-sm-5 col-form-label ">Teléfono<b style="color:orange;"> *</b></label>
             <input type="telefono" class="form form-control-user" name="tel" required>
         </div>
         <div class="form-group">
@@ -242,19 +259,21 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
             <input type="text" class="form form-control-user"  name="nss">
         </div><br>
        <div class="form-group">
-         <br><label class="col-sm-5 col-form-label ">Contraseña</label>
+         <br><label class="col-sm-5 col-form-label ">Contraseña<b style="color:orange;"> *</b></label>
          <input type="password" class="form form-control-user" name="pass" required>
        </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label " for="inputPassword3" >Carrera</label>
+            <label class="col-sm-5 col-form-label " for="inputPassword3" >Carrera<b style="color:orange;"> *</b></label>
             <select class="form-control selct2" type="number" name="carrera" required>
+                <option></option>
                 <?php foreach ($carrera as $carreras){
                 echo '<option value="'.$carreras['id_carrera'].'">'.$carreras['nombre_carrera'].'</option>';}; ?>
             </select>
         </div>
         <div class="form-group"> 
-            <label for="inputPassword3" class="col-sm-5 col-form-label " type="number">Rol</label>
+            <label for="inputPassword3" class="col-sm-5 col-form-label " type="number">Rol<b style="color:orange;"> *</b></label>
             <select class="form-control select2" name="rol" required>
+            <option></option>
             <?php 
                 if($user->get('rol') == 0){
                     echo '<option value=0>Administrador</option>';
@@ -271,7 +290,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
 ?>
             </select>
         </div>
-        <input type="submit" class="btn btn-success btn-lg" value="Registrar">
+        <input type="submit" id="registrar" value="Registrar">
     </form>
     </div>
     <script>

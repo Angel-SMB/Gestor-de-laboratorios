@@ -82,22 +82,69 @@ $user = session();
 <?php
 if($user->get('nombre_usuario') != "" && $user->get('rol')==0):
 ?>
-<body>
-  <div  style= "background-color:  #2c729f ; height: 1000px; width: 100%">
-  <nav  style="background-color:black;" class="hunix-login">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <header >
-      <a><h1 style="color:white; margin-left:22%; font-weight:bolder;">BUAP</h1></a>
-    </header>
-      </div>
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
+
+<style>
+            #registrar {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: 75px; 
+            height: 40px;
+            font-size: 13px;
+            font-weight:bold;
+        }
+        #registrar:hover{
+            border: 2px solid blue; 
+            color: blue; 
+            background-color:white;
+            border-radius: 20px;
+        }
+        #atras {
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+             width: 60px; 
+            height: 35px;
+            font-size: 13px;
+            font-weight:bold;
+            border-radius:20px;
+        }
+        #atras:hover{
+            background-color:white;
+            color: #ff0000;
+            text-decoration: underline; 
+            border-radius:20px;
+        }
+        #salir {
+            border-radius: 5px;
+            color:white;
+        }
+        #salir:hover{
+            color: black; 
+        }
+    </style>
   
-  </nav>
+  <nav  style="background-color:#003B5C;" class="hunix-login">
+  <div class="container-fluid">
+  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div style= "height: 50px; width: 100px;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
+        </div>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="text-align: center">
+<li ><a href="salir" id="salir"><span class="fa fa-sign-out"></span> Salir</a></li> 
+</ul>
+  </div>
+  
+</nav>
 
   <div class="login-box">
       
       <div class="login-logo" style="color: white;">
-          <b>Registrar nuevo usuario</b>
+      <b style="color:white; font-weight: bold;">Registrar nuevo equipo</b>
       </div>
 
 
@@ -108,24 +155,26 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0):
     <div class="login-box-body">
     <div class="form-group">
         <div class="form-group">
-            <label class="col-sm-5 col-form-label " for="inputPassword3" >Equipo</label>
-            <select class="form-control selct2" type="number" name="CapIdEquipo" required>
+            <label class="col-sm-5 col-form-label " for="inputPassword3" >Equipo<b style="color:orange;"> *</b></label>
+            <select class="form-control selct2" type="number" style="font-size:13px" name="CapIdEquipo" required>
+            <option></option>
             <?php foreach ($Dequipo as $equipos){
                 echo '<option value="'.$equipos['id_equipo'].'">'.$equipos['nombre_equipo'].'</option>';}; 
                 ?>
             </select>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label " for="inputPassword3" >Capacitación</label>
-            <select class="form-control selct2" type="number" name="CapIdCapacitacion" required>
+            <label class="col-sm-5 col-form-label " for="inputPassword3" >Capacitación<b style="color:orange;"> *</b></label>
+            <select class="form-control selct2" type="number" style="font-size:13px" name="CapIdCapacitacion" required>
+            <option></option>
                 <?php foreach ($Dcapacitacion as $capacitaciones){
                 echo '<option value="'.$capacitaciones['id_capacitacion'].'">'.$capacitaciones['nombre_capacitacion'].'</option>';}; 
                 ?>
             </select>
         </div><br>
-        <input type="submit" class="btn btn-success btn-lg" value="Registrar">
+        <input type="submit" id="registrar" value="Registrar">
        
-        <a href="<?='. base_url("cap_equipos").'?>" class="btn btn-warning text-light text-bold btn-lg">Atras</a>
+        <a href="<?= base_url('cap_equipos'); ?>" class="btn btn-danger" id="atras">Atrás</a>
 
     </form>
 

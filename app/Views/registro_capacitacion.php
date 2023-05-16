@@ -83,23 +83,70 @@ $user = session();
 <?php
 if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol')== 1):
 ?>
-<body>
-  <div class="bg-dark" style= "height: 1000px; width: 100%">
-  <nav  style="background-color:black;" class="hunix-login">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <header >
-      <a><h1 style="color:white; margin-left:22%; font-weight:bolder;">BUAP</h1></a>
-    </header>
-      </div>
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
+
+<style>
+            #registrar {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: 75px; 
+            height: 40px;
+            font-size: 13px;
+            font-weight:bold;
+        }
+        #registrar:hover{
+            border: 2px solid blue; 
+            color: blue; 
+            background-color:white;
+            border-radius: 20px;
+        }
+        #atras {
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+             width: 60px; 
+            height: 35px;
+            font-size: 13px;
+            font-weight:bold;
+            border-radius:20px;
+        }
+        #atras:hover{
+            background-color:white;
+            color: #ff0000;
+            text-decoration: underline; 
+            border-radius:20px;
+        }
+        #salir {
+            border-radius: 5px;
+            color:white;
+        }
+        #salir:hover{
+            color: black; 
+        }
+    </style>
+
+<nav  style="background-color:#003B5C;" class="hunix-login">
+  <div class="container-fluid">
+  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div style= "height: 50px; width: 100px;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
+        </div>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="text-align: center">
+<li ><a href="salir" id="salir"><span class="fa fa-sign-out"></span> Salir</a></li> 
+</ul>
+  </div>
   
-  </nav>
+</nav>
 
   <div class="login-box">
       
       <div class="login-logo">
       
-          <b>Registrar nueva capacitación</b>
+      <b style="color:white; font-weight: bold;">Registrar nueva capacitación</b>
       </div>
 
 
@@ -110,23 +157,23 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <div class="login-box-body">
     <div class="form-group">
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre de la capacitación</label>
-            <input type="text" class="form form-control-user" name="capNombre" >
+            <label class="col-sm-5 col-form-label ">Nombre de la capacitación<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="capNombre" required>
         </div><br><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Duración de la capacitación (Hrs)</label>
-            <input type="number" class="form form-control-user" name="capDuracion" >
+            <label class="col-sm-5 col-form-label ">Duración de la capacitación (Hrs)<b style="color:orange;"> *</b></label>
+            <input type="number" class="form form-control-user" name="capDuracion" required>
         </div><br><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre del instructor</label>
-            <input type="text" class="form form-control-user" name="capInstructor" >
+            <label class="col-sm-5 col-form-label ">Nombre del instructor<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="capInstructor" required>
         </div><br><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Tipo de la capacitación</label>
-            <input type="text" class="form form-control-user" name="capTipo">
+            <label class="col-sm-5 col-form-label ">Tipo de la capacitación<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user" name="capTipo" required>
         </div><br><br>
-        <input type="submit" class="btn btn-success btn-lg" value="Registrar">
-        <a href="<?= base_url('capacitacion'); ?>" class="btn btn-warning text-light text-bold btn-lg">Atras</a>
+        <input type="submit" id="registrar" value="Registrar">
+        <a href="<?= base_url('capacitacion'); ?>" class="btn btn-danger" id="atras">Atrás</a>
     </form>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-2.2.3.min.js"></script>

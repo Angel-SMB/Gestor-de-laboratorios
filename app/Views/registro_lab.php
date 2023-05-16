@@ -83,22 +83,69 @@ $user = session();
 <?php
 if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol')== 1):
 ?>
-<body>
-  <div class="bg-success" style= "height: 1000px; width: 100%">
-  <nav  style="background-color:black;" class="hunix-login">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <header >
-      <a><h1 style="color:white; margin-left:22%; font-weight:bolder;">BUAP</h1></a>
-    </header>
-      </div>
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
+
+<style>
+            #registrar {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: 75px; 
+            height: 40px;
+            font-size: 13px;
+            font-weight:bold;
+        }
+        #registrar:hover{
+            border: 2px solid blue; 
+            color: blue; 
+            background-color:white;
+            border-radius: 20px;
+        }
+        #atras {
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+             width: 60px; 
+            height: 35px;
+            font-size: 13px;
+            font-weight:bold;
+            border-radius:20px;
+        }
+        #atras:hover{
+            background-color:white;
+            color: #ff0000;
+            text-decoration: underline; 
+            border-radius:20px;
+        }
+        #salir {
+            border-radius: 5px;
+            color:white;
+        }
+        #salir:hover{
+            color: black; 
+        }
+    </style>
   
-  </nav>
+  <nav  style="background-color:#003B5C;" class="hunix-login">
+  <div class="container-fluid">
+  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div style= "height: 50px; width: 100px;">
+            <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
+        </div>
+    </div>
+    <ul class="nav navbar-nav navbar-right" style="text-align: center">
+<li ><a href="salir" id="salir"><span class="fa fa-sign-out"></span> Salir</a></li> 
+</ul>
+  </div>
+  
+</nav>
 
   <div class="login-box">
       
       <div class="login-logo">
-          <b>Registrar nuevo laboratorio</b>
+      <b style="color:white; font-weight: bold;">Registrar nuevo laboratorio</b>
       </div>
 
 
@@ -109,28 +156,28 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <div class="login-box-body">
     <div class="form-group">
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre del laboratorio</label>
+            <label class="col-sm-5 col-form-label ">Nombre del laboratorio<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="labNombre" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Ubicación del laboratorio</label>
+            <label class="col-sm-5 col-form-label ">Ubicación del laboratorio<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="labUbicacion" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre del responsable</label>
+            <label class="col-sm-5 col-form-label ">Nombre del responsable<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="labResponsable" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Tipo de laboratorio</label>
+            <label class="col-sm-5 col-form-label ">Tipo de laboratorio<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="labTipo" required>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Estado del laboratorio</label>
-            <input type="text" class="form form-control-user"  name="labEstado">
+            <label class="col-sm-5 col-form-label ">Estado del laboratorio<b style="color:orange;"> *</b></label>
+            <input type="text" class="form form-control-user"  name="labEstado" required>
         </div><br>
        
-        <input type="submit" class="btn btn-success btn-lg" value="Registrar">
-        <a href="<?= base_url('laboratorios'); ?>" class="btn btn-warning text-light text-bold btn-lg">Atras</a>
+        <input type="submit" id="registrar" value="Registrar">
+        <a href="<?= base_url('laboratorios'); ?>" class="btn btn-danger" id="atras">Atrás</a>
     </form>
 
     <script src="../js/jquery.min.js"></script>

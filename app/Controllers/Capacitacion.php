@@ -86,11 +86,22 @@ class Capacitacion extends Controller{
             public function alta_capuser(){
                 $sessions = session();
                 $user =new Cap_usuariosModel();
+                if($sessions->get('rol') == 2 || $sessions->get('rol') == 3){
                 $datos=[
-                    'fecha_fin_capacitacion' =>$this->request->getPost('datetime-local'),
+                    'fecha_fin_capacitacion' =>$this->request->getPost('date'),
+                    'tiempo_valido_capacitacion' => $this->request->getPost('time'),
+                    'id_capacitacion' =>$this->request->getPost('CapIdCapacitacion'),
+                    'id_usuario' =>$sessions->get('id_usuario'),
+                ];
+            }else{
+                              $datos=[
+                    'fecha_fin_capacitacion' =>$this->request->getPost('date'),
+                    'tiempo_valido_capacitacion' => $this->request->getPost('time'),
                     'id_capacitacion' =>$this->request->getPost('CapIdCapacitacion'),
                     'id_usuario' =>$this->request->getPost('CapIdUsuario'),
                 ];
+                
+            }
                 $respuesta=$user->insert($datos);
                 $session = session();
                 $session->setFlashdata('success', 'El curso de capacitación ha sido creado con éxito.');

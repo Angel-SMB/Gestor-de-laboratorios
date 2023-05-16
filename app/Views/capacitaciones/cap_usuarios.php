@@ -231,8 +231,8 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
                     
      <tr>
        <th>ID</th>
-       <th>Fecha de inicio</th>
        <th>Fecha de fin</th>
+       <th>Tiempo valido (semestres)</th>
        <th>Usuario</th>
        <th>Capacitación</th>
        <th>Modificar</th>
@@ -245,8 +245,8 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
      <tr>
      <tr>
        <td><?= $usuarios_capacitaciones['id_usuario_capacitacion']; ?></td>
-       <td><?= $usuarios_capacitaciones['fecha_inicio_capacitacion']; ?></td>
        <td><?= $usuarios_capacitaciones['fecha_fin_capacitacion']; ?></td>
+       <td><?= $usuarios_capacitaciones['tiempo_valido_capacitacion']; ?></td>
        <td><?= $usuarios_capacitaciones['id_usuario'].". ".$generales->nombre_usuario." ".$generales->apellidos_usuario; ?></td>
        <td><?= $usuarios_capacitaciones['id_capacitacion'].". ".$generales->nombre_capacitacion; ?></td>
        <td><a href="<?php echo base_url('modificar_cap_usuarios');?>"data-toggle="modal" data-target="#modalEditarCap_usuarios<?php echo $usuarios_capacitaciones['id_usuario_capacitacion'];?>"><i class="fa-solid fa-pencil" style="color: #1a8fc1;"></i></a></td>

@@ -12,6 +12,10 @@
                 <input type="datetime" class="form-control form-control-user" id="EpresFechaFin" name="EpresFechaFin"  value="<?php echo $usuarios_capacitaciones['fecha_fin_capacitacion'];?>" required>
             </div>      
             <div class="form-floating">
+            <label class="col-sm-5 col-form-label ">Tiempo valido (semestres)*</label>
+            <input type="num" class="form form-control-user" name="time" value="<?php echo $usuarios_capacitaciones['tiempo_valido_capacitacion'];?>" required>
+        </div><br>
+            <div class="form-floating">
             <label class="col-sm-5 col-form-label " for="inputPassword3" >Usuario</label>
             <select class="form-control selct2" type="number" name="presIdUsuario" required>
                 <?php foreach ($Dusuario as $usuarios){

@@ -38,14 +38,14 @@ class Prestamos extends Controller{
         $sessions = session();
         $user =new PrestamoModel();
         $equipo = $this->request->getPost('presIdEquipo');
-        if($equipo != 0){
+        if($sessions->get('rol') == 2 || $sessions->get('rol') == 3){
             $datos=[
                 'fecha_prestamo' =>$this->request->getPost('presFecha'),
                 'hora_inicio_prestamo' =>$this->request->getPost('presHoraInicio'),
                 'hora_fin_prestamo' =>$this->request->getPost('presHoraFin'),
                 'observacion_prestamo' =>$this->request->getPost('presObservacion'),
                 'id_laboratorio' =>$this->request->getPost('presIdLaboratorio'),
-                'id_usuario' =>$this->request->getPost('presIdUsuario'),
+                'id_usuario' =>$sessions->get('id_usuario'),
                 'id_equipo' =>$this->request->getPost('presIdEquipo'),
                 ];
         }else{
@@ -56,7 +56,7 @@ class Prestamos extends Controller{
                 'observacion_prestamo' =>$this->request->getPost('presObservacion'),
                 'id_laboratorio' =>$this->request->getPost('presIdLaboratorio'),
                 'id_usuario' =>$this->request->getPost('presIdUsuario'),
-                'id_equipo' => NULL,
+                'id_equipo' => $this->request->getPost('presIdEquipo'),
                 ];
         }
 

@@ -98,7 +98,6 @@
             height: 40px;
             font-size: 13px;
             font-weight:bold;
-            margin-bottom:10%;
         }
         #registrar:hover{
             border: 2px solid blue; 
@@ -128,7 +127,7 @@
     </div>
   </nav>
 
-  <div class="login-box" >
+  <div class="login-box" style="border-radius: 20px;">
       
       <div class="login-logo">
           <b style="color:white; font-weight: bold;">Regístrate aquí</b>
@@ -139,27 +138,27 @@
 <div id="alerta_pass" style="display: flex; flex-direction: column; align-items: center;">
 
 </div>
-      <form class="w3-container w3-card-4" action="<?= base_url('guardar'); ?>" id="my_form" onsubmit="return validateForm()" method="post">
+      <form style="border-radius: 20px;" class="w3-container w3-card-4" action="<?= base_url('guardar'); ?>" id="my_form" onsubmit="return validateForm()" method="post">
     <div class="login-box-body">
     <div class="form-group">
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Matrícula/ID</label>
+            <label class="col-sm-5 col-form-label ">Matrícula/ID<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user text-dark" id="mat" name="mat" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre</label>
+            <label class="col-sm-5 col-form-label ">Nombre<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="nom" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Apellidos</label>
+            <label class="col-sm-5 col-form-label ">Apellidos<b style="color:orange;"> *</b></label>
             <input type="text" class="form form-control-user" name="ape" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Correo</label>
+            <label class="col-sm-5 col-form-label ">Correo<b style="color:orange;"> *</b></label>
             <input type="email" class="form form-control-user" name="corr" required>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Teléfono</label>
+            <label class="col-sm-5 col-form-label ">Teléfono<b style="color:orange;"> *</b></label>
             <input type="telefono" class="form form-control-user" name="tel" required>
         </div>
         <div class="form-group">
@@ -167,18 +166,19 @@
             <input type="text" class="form form-control-user"  name="nss">
         </div><br>
        <div class="form-group">
-         <br><label class="col-sm-5 col-form-label ">Contraseña</label>
+         <br><label class="col-sm-5 col-form-label ">Contraseña<b style="color:orange;"> *</b></label>
             <input type="password"  class="form form-control-user" name="pass" id="pass" required>
       </div>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label " for="inputPassword3" >Carrera</label>
+            <label class="col-sm-5 col-form-label " for="inputPassword3" >Carrera<b style="color:orange;"> *</b></label>
             <select class="form-control selct2" type="number" name="carrera" style="font-size:13px" required>
+            <option></option>
                 <?php foreach ($carrera as $carreras){
                 echo '<option value="'.$carreras['id_carrera'].'">'.$carreras['nombre_carrera'].'</option>';}; ?>
             </select>
         </div>
         <div class="form-group"> 
-            <label for="inputPassword3" class="col-sm-5 col-form-label " type="number">Rol</label>
+            <label for="inputPassword3" class="col-sm-5 col-form-label " type="number">Rol<b style="color:orange;"> *</b></label>
             <select class="form-control select2" name="rol" style="font-size:13px" required>
                 <option value=3>Alumno</option>
             </select>
