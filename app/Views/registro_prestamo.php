@@ -163,7 +163,7 @@ if($user->get('nombre_usuario') != "" ):
       <div class="login-logo">
       <b style="color:white; font-weight: bold;">Registrar nuevo préstamo</b>
       </div>
-      <div id="alerta_hrs" style="display: flex; flex-direction: column; align-items: center; font-weight:bold; margin-top: 20px; background-color:red;">
+      <div id="alerta_hrs" style="display: flex; flex-direction: column; align-items: center; font-weight:bold; margin-top: 20px; background-color:red; color: white;">
 
 </div>
       <?php if (session()->has('success')): ?>
@@ -241,31 +241,41 @@ if($user->get('nombre_usuario') != "" ):
 
 		function validateHora() {
             
-var inputFecha = document.getElementById('presFecha').value;
-var fecha = new Date(inputFecha);
-var diaSemana = fecha.getDay();
+                var inputFecha = document.getElementById('presFecha').value;
+                var fecha = new Date(inputFecha);
+                var diaSemana = fecha.getDay();
 
-var horaI = document.getElementById("presHoraInicio").value;
+                var horaI = document.getElementById("presHoraInicio").value;
 
-var fechaI = new Date();
-fechaI.setHours(horaI.substr(0,2), horaI.substr(3,2),0,0);
+                var fechaI = new Date();
+                fechaI.setHours(horaI.substr(0,2), horaI.substr(3,2),0,0);
 
-var horaMaximaI = new Date();
-horaMaximaI.setHours(14, 0, 0, 0);
-var horaMinimaI = new Date();
-horaMinimaI.setHours(8, 0, 0, 0);
+                var horaMaximaI = new Date();
+                horaMaximaI.setHours(14, 0, 0, 0);
+                var horaMinimaI = new Date();
+                horaMinimaI.setHours(8, 0, 0, 0);
 
-var horaF = document.getElementById("presHoraFin").value;
+                var horaF = document.getElementById("presHoraFin").value;
 
-var fechaF = new Date();
-fechaF.setHours(horaF.substr(0, 2), horaF.substr(3, 2), 0, 0);
+                var fechaF = new Date();
+                fechaF.setHours(horaF.substr(0, 2), horaF.substr(3, 2), 0, 0);
+                
+                var horaMaximaF = new Date();
+                horaMaximaF.setHours(15, 0, 0, 0);
+                var horaMinimaF = new Date();
+                horaMinimaF.setHours(9, 0, 0, 0);
 
-var horaMaximaF = new Date();
-horaMaximaF.setHours(15, 0, 0, 0);
-var horaMinimaF = new Date();
-horaMinimaF.setHours(9, 0, 0, 0);
+    // Llamamos a la función compararHoras para validar las horas de inicio y fin
+    if (horaI > horaF || horaI == horaF) {
+        var mensaje = "La hora de fin debe ser mayor a la hora de inicio";
+        var alerta = document.createElement("div");
+        alerta.className = "alerta";
+        alerta.innerHTML = mensaje;
+        document.getElementById("alerta_hrs").appendChild(alerta);
+        return false;
+    }
 
-                if (diaSemana == 6 || diaSemana == 5) {
+    if (diaSemana == 6 || diaSemana == 5) {
                     var mensaje = "No es posible hacer préstamos en fines de semana";
 			            var alerta = document.createElement("div");
 			            alerta.className = "alerta";
@@ -320,7 +330,8 @@ horaMinimaF.setHours(9, 0, 0, 0);
                 }
                     }
 
-        }
+}
+
         
 	</script>
 
