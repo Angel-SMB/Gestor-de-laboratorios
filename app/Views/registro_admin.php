@@ -106,8 +106,9 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
 <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures" style=" height: 100%;">
             <div class="nano">
                 <div class="nano-content">
-                    <div class="logo"><a href="#" ><span>Gestor de laboratorios</span></a></div>
+                <div class="logo"><a href="#" ><img src="../img/escudo_azul_claro3-01.png" width="50%" height="50%" length="100%" ></a></div>
                     <ul >
+                    <div style="text-align: center; "><li class="label"><b style="font-size:20px">Gestor de laboratorios</b></li></div>
 
                         <?php
                         

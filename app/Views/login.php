@@ -69,6 +69,18 @@
 </head>
 <body style= "height: auto; width: 100%; background-color:#001D36;  ">
 <style>
+        #enlace {
+            align-items: center;
+            justify-content: center;
+            height: 50px; 
+            width: 200px; 
+            font-weight:bolder; 
+            color:#001D36;
+            text-decoration: none; 
+        }
+        #enlace:hover{
+            color:blue;
+        }
         #login {
             border-radius: 20px;
             color:white;
@@ -164,7 +176,7 @@
                     </div>
                 </div>
             </form>
-            <p>¿No tienes cuenta? <a href="registro" style="font-weight:bolder; color:blue;">Registrate aquí</a></p>
+            <p>¿No tienes cuenta? <a href="registro" id="enlace">Registrate aquí</a></p>
         </div>
 
 
