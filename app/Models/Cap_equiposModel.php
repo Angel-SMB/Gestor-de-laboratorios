@@ -17,4 +17,5 @@ class Cap_equiposModel extends Model{
 
         return $query->getResult();
     }
+
 }

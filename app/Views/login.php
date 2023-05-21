@@ -134,7 +134,7 @@
             <b style="color:white; font-weight: bold;">Bienvenido</b>
         </div>  
 
-        <div id="alerta_pass" style="display: flex; background-color: orange; flex-direction: column; font-weight: bold; align-items: center;">
+        <div id="alerta_pass" style="color:white; border-radius: 20px; display: flex; background-color: orange; flex-direction: column; font-weight: bold; align-items: center;">
 
 </div>
 

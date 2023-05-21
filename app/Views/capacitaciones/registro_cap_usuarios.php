@@ -186,7 +186,7 @@ if($user->get('nombre_usuario') != ""):
             
             <?php 
                 if($user->get('rol') == 0||$user->get('rol') == 1){
-                    echo '<select class="form-control selct2" type="number" style="font-size:13px" name="presIdUsuario" required>';
+                    echo '<select class="form-control selct2" type="number" style="font-size:13px" name="CapIdUsuario" required>';
                     echo '<option></option>';
                     foreach ($Dusuario as $usuarios){
                         echo'

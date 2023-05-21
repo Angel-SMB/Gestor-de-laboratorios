@@ -6,6 +6,8 @@ use App\Models\PrestamoModel;
 use App\Models\UserModel;
 use App\Models\LaboratorioModel;
 use App\Models\EquiposModel;
+use App\Models\Cap_equiposModel;
+
 class Prestamos extends Controller{
     public function index(){
         $prest = new PrestamoModel();
@@ -28,9 +30,7 @@ class Prestamos extends Controller{
         $datos_user=$user->orderBy('id_usuario','ASC')->findAll();
         $datos_lab=$lab->orderBy('id_laboratorio','ASC')->findAll();
         $datos_equ=$equ->orderBy('id_equipo','ASC')->findAll();
-        return view('registro_prestamo',['usuario'=>$datos_user, 'laboratorio'=>$datos_lab, 'equipo'=>$datos_equ]);
-
-        
+        return view('registro_prestamo',['usuario'=>$datos_user, 'laboratorio'=>$datos_lab, 'equipo'=>$datos_equ]);    
     }
 
 
@@ -59,7 +59,35 @@ class Prestamos extends Controller{
                 'id_equipo' => $this->request->getPost('presIdEquipo'),
                 ];
         }
+        ///CONFIRMACION DE LAS CAPACITACIONES
+        $cap_equipos = new Cap_equiposModel();
+        $cap_usuario =new UserModel();
 
+        $datos_cap=$cap_usuario->capacitaciones_usuario();
+
+        $nombres = $cap_equipos->table('equipo_capacitacion')
+        ->select('capacitacion.id_capacitacion, capacitacion.nombre_capacitacion')
+        ->join('capacitacion', 'capacitacion.id_capacitacion = equipo_capacitacion.id_capacitacion')
+        ->where('equipo_capacitacion.id_equipo', $datos['id_equipo'])
+        ->get()
+        ->getResultArray();
+    
+        //Contador de las capacitaciones que necesita el equipo en cuestión
+        $conteo = $cap_equipos->table('equipo_capacitacion')
+            ->where('equipo_capacitacion.id_equipo', $datos['id_equipo'])
+            ->countAllResults();
+
+            //Contador de las capacitaciones que tiene el usuario en cuestión
+            $conteo_usuario = $cap_usuario->join('usuario_capacitacion', 'usuario.id_usuario = usuario_capacitacion.id_usuario')
+            ->join('capacitacion', 'usuario_capacitacion.id_capacitacion = capacitacion.id_capacitacion')
+            ->join('equipo_capacitacion', 'capacitacion.id_capacitacion = equipo_capacitacion.id_capacitacion')
+            ->join('equipo', 'equipo_capacitacion.id_equipo = equipo.id_equipo')
+            ->where('usuario.id_usuario', $datos['id_usuario'])
+            ->where('equipo.id_equipo', $datos['id_equipo'])
+            ->countAllResults();
+
+
+        if($conteo == $conteo_usuario && $datos_cap[0]->id_equipo == $datos['id_equipo']){
         $respuesta=$user->insert($datos);
         $session = session();
         $session->setFlashdata('success', 'El préstamo ha sido creado con éxito.');
@@ -70,7 +98,30 @@ class Prestamos extends Controller{
                 return redirect()->to(base_url('alumno'));
             }
         }
-    }
+        echo "Es posible realizar el prestamo";
+    }else{
+        return view('error_capacitaciones',['nombres'=>$nombres, 'datos_cap'=>$datos_cap]);
+        echo "No es posible realizar el préstamo, el equipo solicitado requiere las siguientes capacitaciones: <br>";
+        foreach ($nombres as $nombre) {
+            $nombreCapacitacion = $nombre['nombre_capacitacion'];
+            $capacitacionEncontrada = false;
+        
+            foreach ($datos_cap as $caps) {
+                if ($nombreCapacitacion === $caps->nombre_capacitacion) {
+                    $capacitacionEncontrada = true;
+                    break;
+                }
+            }
+        
+            if (!$capacitacionEncontrada) {
+                echo $nombreCapacitacion . "<br>";
+            }
+        }
+        
+        
+        
+
+    }}
 
     public function eliminar($id){
         $modelo = new PrestamoModel();

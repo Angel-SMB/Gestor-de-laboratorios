@@ -229,7 +229,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
                     
      <tr>
        <th>ID</th>
-       <th>Fecha y Hora de inicio</th>
+       <th>Fecha</th>
        <th>Hora de inicio</th>
        <th>Hora de finalización</th>
        <th>Observación</th>

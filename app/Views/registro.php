@@ -135,7 +135,7 @@
       <?php if (session()->has('success')): ?>
   <div class="alert alert-warning" style="text-align: center;"><?= session('success') ?></div>
 <?php endif ?>
-<div id="alerta_pass" style="display: flex; flex-direction: column; align-items: center;">
+<div id="alerta_pass" style="display: flex; border-radius: 20px;  flex-direction: column; align-items: center;">
 
 </div>
       <form style="border-radius: 20px;" class="w3-container w3-card-4" action="<?= base_url('guardar'); ?>" id="my_form" onsubmit="return validateForm()" method="post">
@@ -185,7 +185,9 @@
         </div>
         <input type="submit" id="registrar" value="Registrar">
     </form>
+<?php
 
+?>
     <script>
 
 		function validateForm() {

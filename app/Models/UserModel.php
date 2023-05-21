@@ -18,7 +18,7 @@ class UserModel extends Model{
     }
 
     public function datos_capacitacion(){
-        $session = session();
+        $session = session();   
         $matri = $session->get("matricula");
         $builder = $this->db->table('usuario');
         $builder->select('usuario.*, usuario.matricula, usuario_capacitacion.fecha_fin_capacitacion, usuario_capacitacion.tiempo_valido_capacitacion, 
@@ -32,5 +32,20 @@ class UserModel extends Model{
         return $query->getResult();
     }
 
+    public function capacitaciones_usuario(){
+        $session = session();
+        $matri = $session->get("matricula");
+        $builder = $this->db->table('usuario');
+        $builder->select('equipo.id_equipo, capacitacion.nombre_capacitacion');
+        $builder->join('usuario_capacitacion', 'usuario.id_usuario = usuario_capacitacion.id_usuario');
+        $builder->join('capacitacion', 'usuario_capacitacion.id_capacitacion = capacitacion.id_capacitacion');
+        $builder->join('equipo_capacitacion', 'capacitacion.id_capacitacion = equipo_capacitacion.id_capacitacion');
+        $builder->join('equipo', 'equipo_capacitacion.id_equipo = equipo.id_equipo');
+        $builder->where('matricula', $matri);
+
+        $query = $builder->get();
+
+        return $query->getResult();
+    }
 
 }

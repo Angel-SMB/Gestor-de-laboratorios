@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2023 a las 22:52:58
+-- Tiempo de generación: 18-05-2023 a las 01:37:40
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -175,10 +175,7 @@ INSERT INTO `prestamo` (`id_prestamo`, `fecha_prestamo`, `hora_inicio_prestamo`,
 (3, '2023-05-15', '10:00:00', '12:00:00', 'Encontre un equipo dañado', 2, 4, 8),
 (4, '2023-05-18', '10:00:00', '09:00:00', '', 1, 1, 12),
 (5, '2023-05-18', '08:24:00', '09:00:00', '', 4, 1, 1),
-(6, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 12),
-(7, '2023-05-15', '12:12:00', '12:12:00', '', 1, 4, 8),
-(8, '2023-05-17', '12:12:00', '12:12:00', '', 3, 6, 8),
-(9, '2023-05-01', '12:12:00', '12:12:00', 'w', 2, 6, 8);
+(6, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 12);
 
 -- --------------------------------------------------------
 
@@ -210,6 +207,7 @@ INSERT INTO `usuario` (`id_usuario`, `matricula`, `nombre_usuario`, `apellidos_u
 (4, '202224664', 'Ernesto', 'Arroyo Reyes', 'ernestoA@ernestoA', '222135786', '1234', '99984743', 1, '3'),
 (5, '202253071', 'María Zacil', 'Sánchez Juárez', 'Zacil@zacil', '221595644', '1234', '99987383', 1, '2'),
 (6, '202238868', 'David', 'Flores Jerónimo', 'david@david', '222139846', '1234', '99936163', 2, '2'),
+(8, '201907831', 'Diego', 'San Martin', 'diego.sanmartin@alumno.buap', '2221568798', '$2y$10$M/1I9RHTK92w9544FaIsBudTD3thuE/IMbLTongykintRokRlTOOy', '98765435', 1, '3'),
 (10, 'admin', 'Admin', 'istrador', 'admin@admin', '2212515687', '$2y$10$5MfDmQruug30BivgM76JCeuX2Ri9z.ZZAjj9iINpUsK.SkxHinfSG', '', 1, '0'),
 (11, 'Encargado', 'Encargado', 'prueba', 'encargado@prueba', '2212558694', '$2y$10$H783uSp8NfIz52GImtCwxuHKi8FGgX.yp9haPDOp1uf2HJoaDPdOm', '', 1, '1'),
 (12, 'NSS529640', 'Diana Ivone', 'Tapia López', 'ivone.tapia@correo.buap.mx', '2224860704', '$2y$10$uJirFZxDnf8J1Tt2CD4H7uoA0kH5LK/NA80hoDs6l54QWeFdFMwf2', '8745634', 1, '2');
@@ -339,7 +337,7 @@ ALTER TABLE `laboratorio`
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

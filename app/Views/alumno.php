@@ -38,11 +38,11 @@ $user = session();
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
 
-<link href='assets/css/fullcalendar.css' rel='stylesheet' />
-<link href='assets/css/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='assets/js/jquery-1.10.2.js' type="text/javascript"></script>
-<script src='assets/js/jquery-ui.custom.min.js' type="text/javascript"></script>
-<script src='assets/js/fullcalendar.js' type="text/javascript"></script>
+<link href='../css/fullcalendar.css' rel='stylesheet' />
+<link href='../css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='../js/jquery-1.10.2.js' type="text/javascript"></script>
+<script src='../js/jquery-ui.custom.min.js' type="text/javascript"></script>
+<script src='../js/fullcalendar.js' type="text/javascript"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -131,17 +131,17 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
                     }
                       };?></p>
                       <div style="margin-bottom:10px;">
-                        <a class="btn btn-primary" href="<?= base_url('registro_prestamo');?>">Realizar préstamo</a>
+                        <a class="btn btn-primary" href="<?= base_url('registro_prestamo');?>">Realizar una solicitud de préstamo</a>
                       </div>
                       <div style="margin-bottom:10px;">
-                        <a href="<?= base_url('registro_cap_usuarios'); ?>" class="btn btn-primary">Registrarse en una capacitación</a><br>
+                        <a href="<?= base_url('registro_cap_usuarios'); ?>" class="btn btn-primary">Registrar una capacitación</a><br>
                       </div>
                       <div style="margin-bottom:10px;">
-                        <button type="button" id="btnMostrarP" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ver mis préstamos</button>
+                        <button type="button" id="btnMostrarP" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ver mis solicitudes de préstamo</button>
                         <button type="button" id="btnOcultarP" style="display:none;" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ocultar mis préstamos</button>
                       </div>
                       <div style="margin-bottom:10px;"> 
-                        <button type="button" id="btnMostrarC" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ver mis cursos</button>
+                        <button type="button" id="btnMostrarC" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ver mis capacitaciones</button>
                         <button type="button" id="btnOcultarC" style="display:none;" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ocultar mis cursos</button>
                       </div>
                     </div>
@@ -267,7 +267,7 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
 <!-- Tabla de capacitaciones -->
 <div id="capacitacion" class="collapse" style="text-align:center; max-width: 100%;">
               <div style="background-color:rgba( 0, 59, 92 , .2); border-style: double; width: 100%; overflow-x: auto;">
-              <h3 style="font-weight:bolder; color: white; text-align: center;">Tus cursos</h3>
+              <h3 style="font-weight:bolder; color: white; text-align: center;">Mis capacitaciones</h3>
               <div style=" width: 100%; overflow-x: auto;">
               <table class="table table-bordered" style="background-color:white; width: 100%; " cellspacing="0">
   <thead>
