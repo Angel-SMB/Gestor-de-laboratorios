@@ -215,7 +215,7 @@ if($user->get('nombre_usuario') != "" ):
             </select>
         </div><br>
         <div class="form-group">
-            <label class="col-sm-5 col-form-label " for="inputPassword3" >Equipo<b style="color:orange;"> *</b></label>
+            <label class="col-sm-5 col-form-label " for="inputPassword3" >Equipo<b style="color:orange;"> *</b></label><h6>Si no requiere un equipo, seleccione "Ninguno"</h6>
             <select class="form-control selct2" style="font-size:13px" type="number" name="presIdEquipo" >
                 <option></option>
                 <?php foreach ($equipo as $equipos){

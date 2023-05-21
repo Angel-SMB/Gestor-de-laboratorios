@@ -72,7 +72,7 @@ $user = session();
     <link href="../css/lib/helper.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 
-    <title>Capacitaciones insuficientes</title>
+    <title>ERROR DE ESTADO</title>
 </head>
 <style>
 
@@ -145,39 +145,38 @@ $user = session();
 <div class="login-box" style="width:1000px;">
       
       <div class="login-logo" style="color: white;">
-          <b style="color:white; font-weight: bold;">Lista de capacitaciones faltantes</b>
+          <b style="color:white; font-weight: bold;">ERROR 105: Error de disponibilidad</b>
       </div>
 
-<div class="table-container" >
+<div class="table-container">
     
-<table class="table fondo table-light table-striped" style="text-align:center; border-radius:20px; width:50%">
+<table class="table fondo table-light table-striped" style="text-align:center; border-radius:20px; width:50%;">
             <thead class="fondo-celdas text-center">
                 <tr>
-                    <th style="text-align:center;">ID</th>
-                    <th style="text-align:center;">Nombre de la capacitación</th>
+                    <th style="text-align:center; ">Nombre del laboratorio</th>
+                    <th style="text-align:center; ">Estado</th>
                 </tr>
             </thead>
                 <tbody>
                     <tr  style="text-align:center;">
                     <?php
-                    foreach ($nombres as $nombre) {
-                                $nombreCapacitacion = $nombre['nombre_capacitacion'];
-                                $capacitacionEncontrada = false;
+                                    
+                    foreach ($estado as $estados) {
                             
-                                foreach ($datos_cap as $caps) {
-                                    if ($nombreCapacitacion === $caps->nombre_capacitacion) {
-                                        $capacitacionEncontrada = true;
-                                        break;
-                                    }
-                                }
-                            
-                                if (!$capacitacionEncontrada) {
                                     echo"
                                     <tr>
-                                    <td style='text-align: center;'>". $nombre['id_capacitacion'] ."</td>
-                                    <td style='text-align: center;'>". $nombre['nombre_capacitacion'] ."</td>   
-                                    </tr>
-                                ";}
+                                    <td style='text-align: center; color:black;'>". $estados['nombre_laboratorio'] ."</td>";
+                                    if($estados['estado_laboratorio'] == "Dañado" || $estados['estado_laboratorio'] == "En revisión"){
+                                        echo "<td style='text-align: center; font-weight:bolder; color:orange;'>". $estados['estado_laboratorio'] ."</td>   
+                                        </tr>
+                                        ";
+                                    }else{
+                                        if($estados['estado_laboratorio'] == "No disponible"){
+                                            echo "<td style='text-align: center; font-weight:bolder; color:red;'>". $estados['estado_laboratorio'] ."</td>   
+                                            </tr>
+                                            ";
+                                    }
+                                }
                                 }
                     ?>
                     </tr>

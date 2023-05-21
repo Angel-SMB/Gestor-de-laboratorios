@@ -20,15 +20,20 @@
             </div>
             <div class="form-floating">
                 <label class="col-sm-5  col-form-label">Observación</label>
-                <input type="text" class="form-control form-control-user" id="EingObservacion" name="EingObservacion"  value="<?php echo $laboratorios['observacion_laboratorio'];?>" required>
+                <input type="text" class="form-control form-control-user" id="EingObservacion" name="EingObservacion"  value="<?php echo $laboratorios['observacion_laboratorio'];?>">
             </div>
             <div class="form-floating">
                 <label class="col-sm-5  col-form-label">Tipo</label>
                 <input type="text" class="form-control form-control-user" id="EingTipo" name="EingTipo"  value="<?php echo $laboratorios['tipo_laboratorio'];?>" required> 
             </div>
-            <div class="form-floating">
-                <label class="col-sm-5  col-form-label">Estado</label>
-                <input type="text" class="form-control form-control-user" id="EingEstado" name="EingEstado"  value="<?php echo $laboratorios['estado_laboratorio'];?>" required>
+            <div class="form-group"> 
+                <label for="inputPassword3" class="col-sm-5 col-form-label " type="text">Estado</label>
+                <select class="form-control select2" name="EingEstado" required>
+                    <option value="Disponible" <?php if($laboratorios['estado_laboratorio']=='Disponible') echo 'selected'?>>Disponible</option>    
+                    <option value="No disponible" <?php if($laboratorios['estado_laboratorio']=='No disponible') echo 'selected'?>>No disponible</option>
+                    <option value="Dañado" <?php if($laboratorios['estado_laboratorio']=='Dañado') echo 'selected'?>>Dañado</option>
+                    <option value="En revisión" <?php if($laboratorios['estado_laboratorio']=='En revisión') echo 'selected'?>>En revisión</option>
+                </select>
             </div>
           </div>
           <div class="modal-footer">

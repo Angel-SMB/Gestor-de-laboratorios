@@ -229,7 +229,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
 
                     
      <tr>
-       <th>ID Laboratorio</th>
+       <th>ID</th>
        <th>Nombre</th>
        <th>Ubicación</th>
        <th>Responsable</th>

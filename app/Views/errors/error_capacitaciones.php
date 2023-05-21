@@ -7,17 +7,7 @@ $user = session();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php
-                        
-                        if($user->get('nombre_usuario')==""){
-                            echo '<title>No se ha iniciado sesión</title>';
-                        }else{
-                            if($user->get('rol')==0 || $user->get('rol')==1){
-                                    echo '<title>Registrar laboratorios</title>';
-                                }
-                            }
-                        ?>
-    <link rel="icon" type="image/png" href="../img/Escudo_BUAP_Negativo.png">                        
+    <link rel="icon" type="image/png" href="../img/Escudo_BUAP_Negativo.png">
 
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
     <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
@@ -56,6 +46,8 @@ $user = session();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="../css/AdminLTE.min.css">
     <link rel="stylesheet" href="../css/blue.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
 
     <link href="../css/lib/font-awesome.min.css" rel="stylesheet">
     <link href="../css/lib/themify-icons.css" rel="stylesheet">
@@ -79,45 +71,24 @@ $user = session();
     <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="../css/lib/helper.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-</head>
-<?php
-if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol')== 1):
-?>
-<body style= "height: auto; width: 100%; background-color:#001D36;  ">
 
+    <title>ERROR DE CAPACITACIONES</title>
+</head>
 <style>
-            #registrar {
-            border-radius: 20px;
-            color:white;
-            background-color: #0063c2  ;
-            width: 75px; 
-            height: 40px;
-            font-size: 13px;
-            font-weight:bold;
-        }
-        #registrar:hover{
-            border: 2px solid blue; 
-            color: blue; 
-            background-color:white;
-            border-radius: 20px;
-        }
-        #atras {
-            display: inline-grid;
-            align-items: center;
+
+        .table-container {
+            display: flex;
             justify-content: center;
-            color: white;
-            text-decoration: none; 
-             width: 60px; 
-            height: 35px;
-            font-size: 13px;
-            font-weight:bold;
-            border-radius:20px;
+            position: relative;
+            text-align: center;
+            border-collapse: collapse;
         }
-        #atras:hover{
-            background-color:white;
-            color: #ff0000;
-            text-decoration: underline; 
-            border-radius:20px;
+        #user {
+            border-radius: 5px;
+            color:white;
+        }
+        #user:hover{
+            color: black; 
         }
         #salir {
             border-radius: 5px;
@@ -126,11 +97,52 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
         #salir:hover{
             color: black; 
         }
+        #atras {
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+            width: 60px; 
+            height: 35px;
+            font-size: 13px;
+            font-weight:bold;
+            border-radius:20px;
+        margin-left:75%;
+
+        }
+        #atras:hover{
+            background-color:#001D36;
+            color: #ff0000;
+            text-decoration: underline; 
+            border-radius:20px;
+            border: 2px solid #ff0000; 
+        }
+        #principal {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: auto; 
+            height: 40px;
+            font-size: 13px;
+            font-weight:bold;
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+        }
+        #principal:hover{
+            border: 2px solid blue; 
+            color: blue; 
+            background-color:#001D36;
+            border-radius: 20px;
+        }
     </style>
-  
-  <nav  style="background-color:#003B5C;" class="hunix-login">
+<body style= "height: auto; width: 100%; background-color:#001D36;  ">
+<nav  style="background-color:#003B5C;" class="hunix-login">
   <div class="container-fluid">
-  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div class="navbar-header" style="display: flex; justify-content: center;">
     <div style= "height: 50px; width: 100px;">
             <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
         </div>
@@ -138,57 +150,83 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <ul class="nav navbar-nav navbar-right" style="text-align: center">
 <li ><a href="salir" id="salir"><span class="fa fa-sign-out"></span> Salir</a></li> 
 </ul>
+    <?php
+    if($user->get('rol')==2 || $user->get('rol')==3){
+        echo '    <ul class="nav navbar-nav navbar-right" style="text-align: center">
+        <li><a href="alumno" id="user"><span class="fa fa-user"></span> '.$user->get('nombre_usuario').'</a></li> 
+        </ul>';
+    }
+    
+    ?>
+
   </div>
   
 </nav>
 
-  <div class="login-box">
+<div class="login-box" style="width:1000px;">
       
-      <div class="login-logo">
-      <b style="color:white; font-weight: bold;">Registrar nuevo laboratorio</b>
+      <div class="login-logo" style="color: white;">
+        <b style="color:white; font-weight: bold;">ERROR: Faltan capacitaciones</b><br>
       </div>
 
+<div class="table-container" >
+    
+<table class="table fondo table-light table-striped" style="text-align:center; border-radius:20px; width:50%">
 
-      <?php if (session()->has('success')): ?>
-  <div class="alert alert-success"><?= session('success') ?></div>
-<?php endif ?>
-      <form class="w3-container w3-card-4" action="<?= base_url('guardar_lab'); ?>" method="post">
-    <div class="login-box-body">
-    <div class="form-group">
-        <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre del laboratorio<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user" name="labNombre" required>
-        </div><br>
-        <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Ubicación del laboratorio<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user" name="labUbicacion" required>
-        </div><br>
-        <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Nombre del responsable<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user" name="labResponsable" required>
-        </div><br>
-        <div class="form-group">
-            <label class="col-sm-5 col-form-label ">Tipo de laboratorio<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user" name="labTipo" required>
-        </div><br>
-        <div class="form-group"> 
-            <label for="inputPassword3" class="col-sm-5 col-form-label " type="number">Estado del laboratorio<b style="color:orange;"> *</b></label>
-            <select class="form-control selct2" type="number" style="font-size:13px" name="labEstado" required>
-            <option></option>
-            <?php 
-                if($user->get('rol') == 0 || $user->get('rol') == 1){
-                    echo '<option value="Disponible">Disponible</option>';
-                    echo '<option value="No disponible">No disponible</option>';
-                    echo '<option value="Dañado">Dañado</option>';
-                    echo '<option value="En revisión">En revisión</option>';
-                }
+            <thead class="fondo-celdas text-center">
+            <tr>
+                <th style="text-align:center; font-size: 20px" colspan="2">Lista de capacitaciones faltantes</th>
+            </tr>
+                <tr>
+                    <th style="text-align:center;">ID</th>
+                    <th style="text-align:center;">Nombre de la capacitación</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr  style="text-align:center;">
+                    <?php
+                    foreach ($nombres as $nombre) {
+                                $nombreCapacitacion = $nombre['nombre_capacitacion'];
+                                $capacitacionEncontrada = false;
+                            
+                                foreach ($datos_cap as $caps) {
+                                    if ($nombreCapacitacion === $caps->nombre_capacitacion) {
+                                        $capacitacionEncontrada = true;
+                                        break;
+                                    }
+                                }
+                            
+                                if (!$capacitacionEncontrada) {
+                                    echo"
+                                    <tr>
+                                    <td style='text-align: center; '>". $nombre['id_capacitacion'] ."</td>
+                                    <td style='text-align: center; color:black;'>". $nombre['nombre_capacitacion'] ."</td>   
+                                    </tr>
+                                ";}
+                                }
+                    ?>
+                    </tr>
+                </tbody>
+            </table>
+            
+
+</div>
+<div>
+<?php
+    if($user->get('rol') == 0||$user->get('rol') == 1){
+       echo '<a href="'. base_url("prestamos").'"class="btn btn-primary" id="principal">Regresar a préstamos</a>' ;
+    }else{
+        if($user->get('rol') == 2||$user->get('rol') == 3){
+            echo '<a href="'. base_url("alumno").'"class="btn btn-primary" id="principal">Página principal</a>';
+        }
+    }  
 ?>
-            </select>
-        </div>
-        <input type="submit" id="registrar" value="Registrar">
-        <a href="<?= base_url('laboratorios'); ?>" class="btn btn-danger" id="atras">Atrás</a>
-    </form>
-
+ <a href="<?= base_url("registro_prestamo")?>"class="btn btn-danger" id="atras">Atras</a>
+ </div>
+ </div>
+    <div class="container">
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-2.2.3.min.js"></script>
     <!-- jQuery 2.2.3 -->
@@ -200,40 +238,20 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <script src="../js/validar.js"></script>
     <script src="../js/validar.js"></script>
     <script src="../js/usuarios.js"></script>
-</body>
-<?php else:
-include_once ("errors/error_vistas.php");
-echo '<div style="text-align:center;  overflow-x: auto; ">
+        <!-- jquery vendor -->
+        <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/jquery.nanoscroller.min.js"></script>
+    <!-- nano scroller -->
+    <script src="../js/lib/menubar/sidebar.js"></script>
+    <script src="../js/lib/preloader/pace.min.js"></script>
+    <!-- sidebar -->
+    
+    <!-- bootstrap -->
+    <script src="../js/lib/bootstrap.min.js"></script><script src="vistas/js/scripts.js"></script>
+    <!-- scripit init-->
 
-        <div class="card" style="width: 40rem; margin-top: 100px; box-shadow: -10px 0px 30px rgba(255, 255, 255, 1.5);  background-color:black; margin:auto;">
-        <div class="alert alert-danger" role="alert" style="width: 40rem; margin:auto; box-shadow: -20px 10px 30px rgba(  222, 0, 0 , .9);">
-        <b>ERROR :</b> Intento de acceso no permitido, por favor da <a href="' . (($user->get('nombre_usuario') == "") ? "login" : (($user->get('rol') == 2 ||$user->get('rol') == 3) ? "alumno" : "")) . '" class="alert-link" style="color:black;">click aqui</a> para regresar.
-</div>
-  <img src="../img/danger.png" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h2 class="card-title" style="color:red; font-weight:bolder;">Datos del usuario:</h2>
-          <b style="color:white;">'.$user->get('nombre_usuario'). " ". $user->get('apellidos_usuario').'</b><br> ';
-        if($user->get('nombre_usuario') == ""){
-            echo '        
-            <b style="color:white; font-size:small">NO LOGEADO</b>
-            <b style="color:red; font-size:large"> ERROR</b>
-            </div>
-            </div> ';
-        }else{
-            if($user->get('rol') == 3){
-                echo '<b style="color:white;">Alumno</b><br> 
-                </div>
-                </div> ';
-            }else{
-                if($user->get('rol') == 2){
-                    echo '        
-                    <b style="color:white;">Docente</b>
-                    </div>
-                    </div> ';  
-                }
-            }
-        }
-        
-        ?>
-    <?php endif; ?>
+
+    <script src="../js/lib/bootstrap.min.js"></script><script src="vistas/js/scripts.js"></script>
+
+</body>
 </html>

@@ -59,7 +59,27 @@ class Prestamos extends Controller{
                 'id_equipo' => $this->request->getPost('presIdEquipo'),
                 ];
         }
-        ///CONFIRMACION DE LAS CAPACITACIONES
+
+        //CONFIRMACION DE DISPONIBILIDAD DE LABORATORIO SELECCIONADO///
+        $lab = new LaboratorioModel();
+        $laboratorio_disponible = $lab->table('laboratorio')
+        ->select('laboratorio.estado_laboratorio, laboratorio.nombre_laboratorio')
+        ->where('laboratorio.id_laboratorio', $datos['id_laboratorio'])
+        ->get()
+        ->getResultArray();
+
+        foreach($laboratorio_disponible as $laboratorio_disponibles){
+            if($laboratorio_disponibles['estado_laboratorio'] == "Disponible"){
+                $disponibilidad_lab = True;
+                // $actualizar=[
+                //     'estado_laboratorio' => 'No disponible',
+                // ];
+            }else{
+                $disponibilidad_lab = False;
+            }
+    }
+
+        ///CONFIRMACION DE LAS CAPACITACIONES///
         $cap_equipos = new Cap_equiposModel();
         $cap_usuario =new UserModel();
 
@@ -72,12 +92,12 @@ class Prestamos extends Controller{
         ->get()
         ->getResultArray();
     
-        //Contador de las capacitaciones que necesita el equipo en cuestión
+        //CONTADOR de las capacitaciones que necesita el equipo en cuestión
         $conteo = $cap_equipos->table('equipo_capacitacion')
             ->where('equipo_capacitacion.id_equipo', $datos['id_equipo'])
             ->countAllResults();
 
-            //Contador de las capacitaciones que tiene el usuario en cuestión
+            //CONTADOR de las capacitaciones que tiene el usuario en cuestión
             $conteo_usuario = $cap_usuario->join('usuario_capacitacion', 'usuario.id_usuario = usuario_capacitacion.id_usuario')
             ->join('capacitacion', 'usuario_capacitacion.id_capacitacion = capacitacion.id_capacitacion')
             ->join('equipo_capacitacion', 'capacitacion.id_capacitacion = equipo_capacitacion.id_capacitacion')
@@ -87,10 +107,13 @@ class Prestamos extends Controller{
             ->countAllResults();
 
 
-        if($conteo == $conteo_usuario && $datos_cap[0]->id_equipo == $datos['id_equipo']){
+        if($conteo == $conteo_usuario && $datos_cap[0]->id_equipo == $datos['id_equipo'] || $datos['id_equipo'] == 6 && $disponibilidad_lab == True){
         $respuesta=$user->insert($datos);
         $session = session();
         $session->setFlashdata('success', 'El préstamo ha sido creado con éxito.');
+
+        // $id_lab=$datos['id_laboratorio'];
+        // $lab->update($id_lab, $actualizar);
         if($sessions->get('rol')==0 || $sessions->get('rol')==1){
             return redirect()->to(base_url('prestamos'));
         }else{
@@ -98,33 +121,32 @@ class Prestamos extends Controller{
                 return redirect()->to(base_url('alumno'));
             }
         }
-        echo "Es posible realizar el prestamo";
     }else{
-        return view('error_capacitaciones',['nombres'=>$nombres, 'datos_cap'=>$datos_cap]);
-        echo "No es posible realizar el préstamo, el equipo solicitado requiere las siguientes capacitaciones: <br>";
-        foreach ($nombres as $nombre) {
-            $nombreCapacitacion = $nombre['nombre_capacitacion'];
-            $capacitacionEncontrada = false;
-        
-            foreach ($datos_cap as $caps) {
-                if ($nombreCapacitacion === $caps->nombre_capacitacion) {
-                    $capacitacionEncontrada = true;
-                    break;
-                }
-            }
-        
-            if (!$capacitacionEncontrada) {
-                echo $nombreCapacitacion . "<br>";
-            }
-        }
-        
-        
-        
-
-    }}
+        if($disponibilidad_lab != True){
+            return view('errors/error_laboratorios', ['estado'=> $laboratorio_disponible]);
+        }else{
+        return view('errors/error_capacitaciones',['nombres'=>$nombres, 'datos_cap'=>$datos_cap]);     
+    }
+    }
+}
 
     public function eliminar($id){
         $modelo = new PrestamoModel();
+        $lab = new LaboratorioModel();
+        $id_laboratorio = $modelo->table('prestamo')
+        ->select('prestamo.id_laboratorio')
+        ->where('prestamo.id_prestamo', $id)
+        ->get()
+        ->getResult();
+        foreach($id_laboratorio as $id_labs){
+            $id_lab=$id_labs->id_laboratorio;
+        }
+        $actualizar=[
+            'estado_laboratorio' => 'Disponible',
+        ];
+
+        $lab->update($id_lab, $actualizar);
+
         $modelo->where('id_prestamo', $id)->delete($id);
         return redirect()->to(base_url('prestamos'))->with('status', 'préstamo eliminado correctamente');
     }

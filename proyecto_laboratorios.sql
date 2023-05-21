@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2023 a las 01:37:40
+-- Tiempo de generación: 21-05-2023 a las 23:32:10
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -94,7 +94,7 @@ CREATE TABLE `equipo` (
 --
 
 INSERT INTO `equipo` (`id_equipo`, `nombre_equipo`, `marca_equipo`, `modelo_equipo`, `tipo_equipo`, `descripcion_equipo`, `riesgo_equipo`, `id_laboratorio`) VALUES
-(1, 'Computadora', 'Dell', 'DDR4', 'Equipo de computo', 'Equipo con monitor, pantalla y mouse.', 'Bajo', 1),
+(1, 'Computadora 1', 'Dell', 'DDR4', 'Equipo de computo', 'Equipo con monitor, pantalla y mouse.', 'Bajo', 1),
 (2, 'Cortadora laser', 'Sculpfun', 'S9', 'Maquina de grabado', 'Cortadora laser de alta precisión', 'Alto', 1),
 (3, 'Pistola de soldadura', 'Brave', 'BVSLD-01', 'Soldadura', 'Pistola para soldar', 'Medio', 2),
 (4, 'Computadora', 'HP', 'HP-465', 'Equipo de computo', 'Computadora de escritorio, con 8 GB de RAM, 1 TB de disco duro y un procesador Intel i3 de 11° Gen.', 'Bajo', 4),
@@ -118,8 +118,10 @@ CREATE TABLE `equipo_capacitacion` (
 --
 
 INSERT INTO `equipo_capacitacion` (`id_equipo_capacitacion`, `id_equipo`, `id_capacitacion`) VALUES
+(4, 1, 9),
 (1, 2, 1),
 (2, 2, 5),
+(5, 2, 8),
 (3, 3, 7);
 
 -- --------------------------------------------------------
@@ -135,7 +137,7 @@ CREATE TABLE `laboratorio` (
   `nombre_responsable` varchar(150) NOT NULL,
   `observacion_laboratorio` varchar(400) NOT NULL,
   `tipo_laboratorio` varchar(45) NOT NULL,
-  `estado_laboratorio` varchar(45) NOT NULL
+  `estado_laboratorio` enum('Disponible','No disponible','Dañado','En revisión') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -143,10 +145,12 @@ CREATE TABLE `laboratorio` (
 --
 
 INSERT INTO `laboratorio` (`id_laboratorio`, `nombre_laboratorio`, `ubicacion_laboratorio`, `nombre_responsable`, `observacion_laboratorio`, `tipo_laboratorio`, `estado_laboratorio`) VALUES
-(1, 'Cómputo básico', 'Chiapa 2 #224', 'Luis Martínez', 'Ninguna', 'Cómputo', 'Excelente'),
-(2, 'Cómputo intermedio', 'Chiapa 2 #226', 'Luis Martínez', 'Ninguna', 'Cómputo', 'Excelente'),
-(3, 'Makers', 'Chiapa 2 #229', 'Luis Martínez', 'Ninguna', 'Impresiones 3D', 'Excelente'),
-(4, 'Laboratorio avanzado', 'Chiapa 2 #227', 'Luis Martínez', 'Ninguna', 'Soldadura', 'Excelente');
+(1, 'Cómputo básico', 'Chiapa 2 #224', 'Luis Martínez', 'Ninguna', 'Cómputo', 'Disponible'),
+(2, 'Cómputo intermedio', 'Chiapa 2 #226', 'Luis Martínez', 'Ninguna', 'Cómputo', 'En revisión'),
+(3, 'Makers', 'Chiapa 2 #229', 'Luis Martínez', 'Ninguna', 'Impresiones 3D', 'Dañado'),
+(4, 'Laboratorio avanzado', 'Chiapa 2 #227', 'Luis Martínez', 'Ninguna', 'Soldadura', 'Disponible'),
+(7, 'Prueba', 'Chiapa 2 #226', 'Juan Trujillo', 'En buen estado', 'Investigación', 'Disponible'),
+(8, 'Prueba 3', '|a', 'as', '', '56', 'No disponible');
 
 -- --------------------------------------------------------
 
@@ -174,8 +178,8 @@ INSERT INTO `prestamo` (`id_prestamo`, `fecha_prestamo`, `hora_inicio_prestamo`,
 (2, '2023-05-17', '08:00:00', '10:00:00', 'Ninguna', 4, 4, 8),
 (3, '2023-05-15', '10:00:00', '12:00:00', 'Encontre un equipo dañado', 2, 4, 8),
 (4, '2023-05-18', '10:00:00', '09:00:00', '', 1, 1, 12),
-(5, '2023-05-18', '08:24:00', '09:00:00', '', 4, 1, 1),
-(6, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 12);
+(6, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 12),
+(9, '2023-05-24', '10:00:00', '12:00:00', '', 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -325,19 +329,19 @@ ALTER TABLE `equipo`
 -- AUTO_INCREMENT de la tabla `equipo_capacitacion`
 --
 ALTER TABLE `equipo_capacitacion`
-  MODIFY `id_equipo_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_equipo_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `laboratorio`
 --
 ALTER TABLE `laboratorio`
-  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -349,7 +353,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_capacitacion`
 --
 ALTER TABLE `usuario_capacitacion`
-  MODIFY `id_usuario_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_usuario_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
