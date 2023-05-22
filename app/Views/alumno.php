@@ -237,7 +237,7 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
 <!-- Tabla de prestamos -->
               <div id="prestamos" class="collapse" style="text-align:center; width: 100%; ">
               <div style="background-color:rgba( 0, 59, 92 , .2); border-style: double; ">
-                <h3 style="font-weight:bolder; color: white;">Tus préstamos</h3>
+                <h3 style="font-weight:bolder; color: white;">Mis solicitudes</h3>
                 <div style=" width: 100%; overflow-x: auto;">
                 <table class="table table-bordered" style="background-color:white; width:100%; " cellspacing="0">
   <thead>

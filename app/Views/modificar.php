@@ -45,7 +45,7 @@
                 <label for="inputPassword3" class="col-sm-5 col-form-label " type="number">Rol</label>
                 <select class="form-control select2" name="EingRol" required>
                     <option value="0" <?php if($usuarios['rol']==0) echo 'selected'?>>0. Administrador</option>    
-                    <option value="1" <?php if($usuarios['rol']==1) echo 'selected'?>>1. Tec. laboratorio</option>
+                    <option value="1" <?php if($usuarios['rol']==1) echo 'selected'?>>1. Encargado de laboratorio</option>
                     <option value="2" <?php if($usuarios['rol']==2) echo 'selected'?>>2. Docente</option>
                     <option value="3" <?php if($usuarios['rol']==3) echo 'selected'?>>3. Alumno</option>
                 </select>
