@@ -84,6 +84,7 @@ class Prestamos extends Controller{
         $cap_usuario =new UserModel();
 
         $datos_cap=$cap_usuario->capacitaciones_usuario();
+        $equipo_extraido = array_search('id_equipo', array_column($datos_cap, 'id_equipo'));
 
         $nombres = $cap_equipos->table('equipo_capacitacion')
         ->select('capacitacion.id_capacitacion, capacitacion.nombre_capacitacion')
@@ -107,7 +108,7 @@ class Prestamos extends Controller{
             ->countAllResults();
 
 
-        if($conteo == $conteo_usuario && $datos_cap[0]->id_equipo == $datos['id_equipo'] || $datos['id_equipo'] == 6 && $disponibilidad_lab == True){
+        if($conteo == $conteo_usuario && $equipo_extraido == $datos['id_equipo'] || $datos['id_equipo'] == 6 && $disponibilidad_lab == True){
         $respuesta=$user->insert($datos);
         $session = session();
         $session->setFlashdata('success', 'El préstamo ha sido creado con éxito.');

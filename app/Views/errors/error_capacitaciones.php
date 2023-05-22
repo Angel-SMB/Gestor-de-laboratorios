@@ -108,8 +108,6 @@ $user = session();
             font-size: 13px;
             font-weight:bold;
             border-radius:20px;
-        margin-left:75%;
-
         }
         #atras:hover{
             background-color:#001D36;
@@ -134,7 +132,7 @@ $user = session();
         }
         #principal:hover{
             border: 2px solid blue; 
-            color: blue; 
+            color:  #00a7eb ; 
             background-color:#001D36;
             border-radius: 20px;
         }
@@ -163,7 +161,7 @@ $user = session();
   
 </nav>
 
-<div class="login-box" style="width:1000px;">
+<div class="login-box" style="width:1000px;  width: 100%; overflow-x: auto;">
       
       <div class="login-logo" style="color: white;">
         <b style="color:white; font-weight: bold;">ERROR: Faltan capacitaciones</b><br>
@@ -211,7 +209,7 @@ $user = session();
             
 
 </div>
-<div>
+<div style="text-align: right; margin-right :25%;">
 <?php
     if($user->get('rol') == 0||$user->get('rol') == 1){
        echo '<a href="'. base_url("prestamos").'"class="btn btn-primary" id="principal">Regresar a préstamos</a>' ;

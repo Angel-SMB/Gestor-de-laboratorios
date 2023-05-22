@@ -45,7 +45,7 @@ class UserModel extends Model{
 
         $query = $builder->get();
 
-        return $query->getResult();
+        return $query->getResultArray();
     }
 
 }

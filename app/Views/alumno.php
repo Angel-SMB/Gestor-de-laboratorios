@@ -70,6 +70,18 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
         #user:hover{
             color: black; 
         }
+        #btnMostrarP{
+          border-radius: 20px;
+        }
+        #btnMostrarC{
+          border-radius: 20px;
+        }
+        #btnP{
+          border-radius: 20px;
+        }
+        #btnC{
+          border-radius: 20px;
+        }
 </style>
 <nav  style="background-color:#01a3b3 ;" class="hunix-login">
   <div class="container-fluid" style="background-color: #003B5C ">
@@ -92,7 +104,7 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
     
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb" style="background-color:#06195b;">
+            <ol class="breadcrumb" style="background-color:#06195b; border-radius: 40px;">
               <h4 style="color:white;">Bienvenido/a, <?php 
                       if($user->get('rol') == 3){
                         echo $user->get('nombre_usuario');
@@ -105,13 +117,13 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
           <!-- /Breadcrumb -->
     
           <div class="row gutters-sm">
-            <div class="col-md-4 mb-3" style="background-color:rgba( 108, 164, 173 , .8); border-style: dotted;">
+            <div class="col-md-4 mb-3" style="background-color:rgba( 108, 164, 173 , .8); border-style: dotted; border-radius: 40px;">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4><?php 
+                      <h4 style="font-weight:bold;"><?php 
                       if($user->get('rol') == 3){
                         echo 'Alumno';
                       }else{
@@ -131,18 +143,18 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
                     }
                       };?></p>
                       <div style="margin-bottom:10px;">
-                        <a class="btn btn-primary" href="<?= base_url('registro_prestamo');?>">Realizar una solicitud de préstamo</a>
+                        <a class="btn btn-primary" id="btnP" href="<?= base_url('registro_prestamo');?>">Realizar una solicitud de préstamo</a>
                       </div>
                       <div style="margin-bottom:10px;">
-                        <a href="<?= base_url('registro_cap_usuarios'); ?>" class="btn btn-primary">Registrar una capacitación</a><br>
+                        <a href="<?= base_url('registro_cap_usuarios'); ?>" class="btn btn-primary" id="btnC">Registrar una capacitación cursada</a><br>
                       </div>
                       <div style="margin-bottom:10px;">
                         <button type="button" id="btnMostrarP" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ver mis solicitudes de préstamo</button>
-                        <button type="button" id="btnOcultarP" style="display:none;" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ocultar mis préstamos</button>
+                        <button type="button" id="btnOcultarP" style="display:none; border-radius: 20px;" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ocultar mis préstamos</button>
                       </div>
                       <div style="margin-bottom:10px;"> 
                         <button type="button" id="btnMostrarC" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ver mis capacitaciones</button>
-                        <button type="button" id="btnOcultarC" style="display:none;" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ocultar mis cursos</button>
+                        <button type="button" id="btnOcultarC" style="display:none; border-radius: 20px;" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ocultar mis cursos</button>
                       </div>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ $user = session();
                             echo '<title>No se ha iniciado sesión</title>';
                         }else{
                             if($user->get('rol')==0 || $user->get('rol')==2 || $user->get('rol')==3){
-                                    echo '<title>Registrar un usuario en capacitación</title>';
+                                    echo '<title>Registrar una  capacitación cursada</title>';
                                 }
                             }
                         ?>
@@ -161,7 +161,7 @@ if($user->get('nombre_usuario') != ""):
   <div class="login-box">
       
       <div class="login-logo" style="color: white;">
-          <b style="color:white; font-weight: bold;">Registrarse en una capacitación</b>
+          <b style="color:white; font-weight: bold;">Registrar capacitación cursada</b>
       </div>
 
 

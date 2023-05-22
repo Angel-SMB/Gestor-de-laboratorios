@@ -161,7 +161,7 @@ if($user->get('nombre_usuario') != "" ):
   <div class="login-box">
       
       <div class="login-logo">
-      <b style="color:white; font-weight: bold;">Registrar nuevo préstamo</b>
+      <b style="color:white; font-weight: bold;">Registrar solicitud de préstamo</b>
       </div>
       <div id="alerta_hrs" style="display: flex; flex-direction: column; align-items: center; font-weight:bold; margin-top: 20px; background-color:red; color: white;">
 

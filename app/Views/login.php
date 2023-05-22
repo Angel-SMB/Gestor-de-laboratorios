@@ -112,13 +112,13 @@
         }
     </style>
 <div>
-    <nav  style="background-color:#003B5C;" class="hunix-login">
-      <div class="container-fluid">
-        <div class="navbar-header">
-            <header>
-        <div style= "height: 50px; width: 100%; text-align: center;">
+<nav  style="background-color:#01a3b3 ;" class="hunix-login">
+  <div class="container-fluid" style="background-color: #003B5C ">
+  <div class="navbar-header" style="display: flex; justify-content: center;">
+    <div style= "height: 50px; width: 100px;">
             <img src="../img/escudo_azul_claro3-01.png"  width="100%" height="100%" length="100%" >
         </div>
+    </div>
         <!-- <div style="text-align: center;">
             <h1 style="color:white; font-weight:bolder;">BUAP</h1>
         </div> -->

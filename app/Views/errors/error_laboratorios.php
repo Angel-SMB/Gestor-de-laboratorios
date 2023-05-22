@@ -108,14 +108,33 @@ $user = session();
             font-size: 13px;
             font-weight:bold;
             border-radius:20px;
-        margin-left:75%;
-
         }
         #atras:hover{
-            background-color:white;
+            background-color:#001D36;
             color: #ff0000;
             text-decoration: underline; 
             border-radius:20px;
+            border: 2px solid #ff0000; 
+        }
+        #principal {
+            border-radius: 20px;
+            color:white;
+            background-color: #0063c2  ;
+            width: auto; 
+            height: 40px;
+            font-size: 13px;
+            font-weight:bold;
+            display: inline-grid;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none; 
+        }
+        #principal:hover{
+            border: 2px solid  #00a7eb ; 
+            color:  #00a7eb ; 
+            background-color:#001D36;
+            border-radius: 20px;
         }
     </style>
 <body style= "height: auto; width: 100%; background-color:#001D36;  ">
@@ -142,9 +161,9 @@ $user = session();
   
 </nav>
 
-<div class="login-box" style="width:1000px;">
+<div class="login-box" style="width:1000px; width: 100%; overflow-x: auto;">
       
-      <div class="login-logo" style="color: white;">
+      <div class="login-logo" style="color: white; ">
           <b style="color:white; font-weight: bold;">ERROR 105: Error de disponibilidad</b>
       </div>
 
@@ -185,7 +204,18 @@ $user = session();
             
 
 </div>
+<div style="text-align: right; margin-right :25%;">
+<?php
+    if($user->get('rol') == 0||$user->get('rol') == 1){
+       echo '<a href="'. base_url("prestamos").'"class="btn btn-primary" id="principal">Regresar a préstamos</a>' ;
+    }else{
+        if($user->get('rol') == 2||$user->get('rol') == 3){
+            echo '<a href="'. base_url("alumno").'"class="btn btn-primary" id="principal">Página principal</a>';
+        }
+    }  
+?>
  <a href="<?= base_url("registro_prestamo")?>"class="btn btn-danger" id="atras">Atras</a>
+ </div>
 </div>
     <div class="container">
     <!--Bootstrap-->
