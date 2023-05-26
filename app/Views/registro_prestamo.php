@@ -186,7 +186,8 @@ if($user->get('nombre_usuario') != "" ):
         </div><br>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Observación en el laboratorio</label>
-            <input type="text" class="form form-control-user" name="presObservacion" >
+            <textarea type="text" class="form form-control-user" style="width:180px; height:80px" name="presObservacion" id="presObservacion" maxlength="250" ></textarea>
+            <p id="characterCount"></p>
         </div><br>
         <div class="form-group">
             <label class="col-sm-5 col-form-label " for="inputPassword3" >Laboratorio<b style="color:orange;"> *</b></label>
@@ -238,6 +239,14 @@ if($user->get('nombre_usuario') != "" ):
 
 
         <script>
+
+        var input = document.getElementById("presObservacion");
+        var count = document.getElementById("characterCount");
+
+        input.addEventListener("input", function() {
+        var remaining = input.maxLength - input.value.length;
+        count.innerHTML = remaining + " caracteres restantes";
+        });
 
 		function validateHora() {
             

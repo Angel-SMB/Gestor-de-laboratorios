@@ -20,7 +20,7 @@
             </div>
             <div class="form-floating">
                 <label class="col-sm-5  col-form-label">Observación</label>
-                <input type="text" class="form-control form-control-user" id="EpresObservacion" name="EpresObservacion"  value="<?php echo $prestamos['observacion_prestamo'];?>" required> 
+                <input type="text" class="form-control form-control-user" maxlength="250"  id="EpresObservacion" name="EpresObservacion"  value="<?php echo $prestamos['observacion_prestamo'];?>" required>
             </div>
         
             <div class="form-floating">
@@ -69,4 +69,7 @@
       </div>
     </div>
     
+
+
+
 

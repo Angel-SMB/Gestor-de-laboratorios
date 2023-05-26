@@ -17,10 +17,10 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    //public string $baseURL = 'http://localhost/proyecto-lap/public/';
+    public string $baseURL = 'http://localhost/proyecto-lap/public/';
 
     ////LINEA PARA EL SERVIDOR
-    public string $baseURL = 'https://030a-2806-10a6-15-ba0c-1846-37ad-609e-836d.ngrok-free.app/proyecto-lap/public';
+    //public string $baseURL = 'https://030a-2806-10a6-15-ba0c-1846-37ad-609e-836d.ngrok-free.app/proyecto-lap/public';
     
 
     /**

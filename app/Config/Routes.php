@@ -101,7 +101,7 @@ $routes->get('Cap_equiposModel/eliminar/(:num)', 'Capacitacion::eliminar_capequ/
 $routes->post('modificar_cap_equipos/(:any)', 'Capacitacion::modificar_capequ/$1');
 
 
-//Ruta para observar la vista de ALUMNO - MAESTRO
+//Ruta para acceder a la vista de ALUMNO - MAESTRO
 $routes->get('alumno', 'Alumno::index');
 
 //Ruta para acceder a la documentacion - Administrador ONLY

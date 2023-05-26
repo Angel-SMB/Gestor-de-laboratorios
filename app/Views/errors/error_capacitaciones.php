@@ -188,7 +188,7 @@ $user = session();
                                 $capacitacionEncontrada = false;
                             
                                 foreach ($datos_cap as $caps) {
-                                    if ($nombreCapacitacion === $caps->nombre_capacitacion) {
+                                    if ($nombreCapacitacion === $caps["nombre_capacitacion"]) {
                                         $capacitacionEncontrada = true;
                                         break;
                                     }

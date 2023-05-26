@@ -135,7 +135,7 @@
       <?php if (session()->has('success')): ?>
   <div class="alert alert-warning" style="text-align: center;"><?= session('success') ?></div>
 <?php endif ?>
-<div id="alerta_pass" style="display: flex; border-radius: 20px;  flex-direction: column; align-items: center;">
+<div id="alerta_pass" style="display: flex; border-radius: 20px;  flex-direction: column; text-align: center; align-items: center;">
 
 </div>
       <form style="border-radius: 20px;" class="w3-container w3-card-4" action="<?= base_url('guardar'); ?>" id="my_form" onsubmit="return validateForm()" method="post">
@@ -143,7 +143,7 @@
     <div class="form-group">
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Matrícula/ID<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user text-dark" id="mat" name="mat" required>
+            <input type="text" class="form form-control-user text-dark" id="mat" name="mat" maxlength="10" required>
         </div>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Nombre<b style="color:orange;"> *</b></label>
@@ -163,7 +163,7 @@
         </div>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Número de Seguridad Social (NSS)</label>
-            <input type="text" class="form form-control-user"  name="nss">
+            <input type="text" class="form form-control-user"  name="nss" maxlength="11">
         </div><br>
        <div class="form-group">
          <br><label class="col-sm-5 col-form-label ">Contraseña<b style="color:orange;"> *</b></label>
@@ -184,6 +184,7 @@
             </select>
         </div>
         <input type="submit" id="registrar" value="Registrar">
+        <p>Los espacios marcados con <b style="color:orange;"> *</b> son obligatorios</p>
     </form>
 <?php
 
@@ -195,18 +196,25 @@
 			var input_mat = document.getElementById("mat").value;
             var contrasena = document.getElementById("pass").value;
 			// Comprobar si la contraseña cumple con los requisitos
-			var expresionRegular = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
-            let expresion = /^[a-zA-Z0-9]*$/;
+			var expresionRegular = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+            // let expresion = /^[a-zA-Z0-9]*$/;
 			if (!expresionRegular.test(contrasena)) {
                 var mensaje = "La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número y no contener caracteres especiales";
 			    var alerta = document.createElement("div");
 			    alerta.className = "alerta";
 			    alerta.innerHTML = mensaje;
 			    document.getElementById("alerta_pass").appendChild(alerta);
-				    return false;
-			}
-            }
-			if (input_mat.match(/[a-zA-Z]+.*\d+|\d+.*[a-zA-Z]+/)) {
+				return false;
+			}else{
+                if(input_mat.match(/^[a-zA-Z]*$/)){
+                    var mensaje = "La matricula/ID de trabajador no puede contener solo letras";
+			    var alerta = document.createElement("div");
+			    alerta.className = "alerta";
+			    alerta.innerHTML = mensaje;
+			    document.getElementById("alerta_pass").appendChild(alerta);
+                    return false
+                }else{
+                if (input_mat.match(/[a-zA-Z]+.*\d+|\d+.*[a-zA-Z]+/)) {
 				alert("Hemos detectado un ID de trabajador, para ser registrado como maestro por favor vaya con el Encargado de laboratorio para hacer el cambio");
 				return true;
 			}else{
@@ -214,8 +222,10 @@
                     return true;
                 }
             }
-        
-        
+            }
+        }
+            }    
+            
 	</script>
     
     <script src="../js/jquery.min.js"></script>
@@ -226,7 +236,6 @@
     <script src="../js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="../js/npm.js"></script>
-    <script src="../js/validar.js"></script>
     <script src="../js/validar.js"></script>
     <script src="../js/usuarios.js"></script>
 </body>

@@ -162,7 +162,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
         </div><br><br>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Duración de la capacitación (Hrs)<b style="color:orange;"> *</b></label>
-            <input type="number" class="form form-control-user" name="capDuracion" required>
+            <input type="number" class="form form-control-user" name="capDuracion" maxlength="1" required >
         </div><br><br>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Nombre del instructor<b style="color:orange;"> *</b></label>

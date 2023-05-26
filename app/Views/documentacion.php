@@ -194,7 +194,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
                         <h1 class="h3 mb-2 text-gray-800">Modelo Relacional</h1>
                         </div>
                         <div class="iframe-container" style="place-items: center; margin: auto; display: grid;">
-                            <iframe src="https://miro.com/app/embed/uXjVML1C6fw=/?pres=1&frameId=3458764553646086315&embedId=853124920990" scrolling="no" allow="fullscreen; clipboard-read;" allowfullscreen width="95%" height="550 auto" frameborder="2"></iframe>
+                                <iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVML1C6fw=/?moveToViewport=-1168,302,2165,941&embedId=91620277656" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
                         </div>
                        
 <script src="../js/jquery.min.js"></script>

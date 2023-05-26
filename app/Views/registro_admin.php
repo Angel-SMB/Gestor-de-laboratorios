@@ -237,7 +237,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
     <div class="form-group">
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Matrícula/ID<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user text-dark" name="mat" required>
+            <input type="text" class="form form-control-user text-dark" name="mat" maxlength="10" required>
         </div>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Nombre<b style="color:orange;"> *</b></label>
@@ -257,7 +257,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
         </div>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Número de Seguridad Social (NSS)</label>
-            <input type="text" class="form form-control-user"  name="nss">
+            <input type="text" class="form form-control-user"  name="nss" maxlength="11">
         </div><br>
        <div class="form-group">
          <br><label class="col-sm-5 col-form-label ">Contraseña<b style="color:orange;"> *</b></label>
@@ -301,7 +301,7 @@ function validateForm() {
     var input_mat = document.getElementById("mat").value;
     var contrasena = document.getElementById("pass").value;
     // Comprobar si la contraseña cumple con los requisitos
-    var expresionRegular = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    var expresionRegular = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     if (!expresionRegular.test(contrasena)) {
         var mensaje = "La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número";
     var alerta = document.createElement("div");

@@ -155,7 +155,7 @@
                 </div>
                 <div class="form-group">
                 <label for="username">Ingresa tu matrícula/ID</label>
-                    <input type="text" name="username" id="username" class="form-control" style="font-size:13px" placeholder="Matrícula de alumno/ID de trabajador" >
+                    <input type="text" name="username" id="username" class="form-control" style="font-size:13px" placeholder="Matrícula de alumno/ID de trabajador" maxlength="10">
                     
                 </div>
                 <div class="form-group">

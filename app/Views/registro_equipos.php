@@ -176,7 +176,7 @@ if($user->get('nombre_usuario') != "" && $user->get('rol')==0 || $user->get('rol
         </div><br>
         <div class="form-group">
             <label class="col-sm-5 col-form-label ">Nivel de riesgo del equipo<b style="color:orange;"> *</b></label>
-            <input type="text" class="form form-control-user"  name="eqRiesgo" required>
+            <input type="text" class="form form-control-user"  name="eqRiesgo" maxlength="5" required>
         </div><br>
         <div class="form-group">
         <label class="col-sm-5 col-form-label ">Laboratorio en el que se ubica<b style="color:orange;"> *</b></label>

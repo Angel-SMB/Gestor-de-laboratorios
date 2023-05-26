@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2023 a las 23:32:10
+-- Tiempo de generación: 26-05-2023 a las 04:57:33
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -118,11 +118,11 @@ CREATE TABLE `equipo_capacitacion` (
 --
 
 INSERT INTO `equipo_capacitacion` (`id_equipo_capacitacion`, `id_equipo`, `id_capacitacion`) VALUES
-(4, 1, 9),
+(0, 1, 9),
 (1, 2, 1),
 (2, 2, 5),
-(5, 2, 8),
-(3, 3, 7);
+(3, 2, 8),
+(4, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -145,12 +145,24 @@ CREATE TABLE `laboratorio` (
 --
 
 INSERT INTO `laboratorio` (`id_laboratorio`, `nombre_laboratorio`, `ubicacion_laboratorio`, `nombre_responsable`, `observacion_laboratorio`, `tipo_laboratorio`, `estado_laboratorio`) VALUES
-(1, 'Cómputo básico', 'Chiapa 2 #224', 'Luis Martínez', 'Ninguna', 'Cómputo', 'Disponible'),
+(1, 'Cómputo básico', 'Chiapa 2 #224', 'Luis Martínez', 'Ninguna', 'Cómputo', 'No disponible'),
 (2, 'Cómputo intermedio', 'Chiapa 2 #226', 'Luis Martínez', 'Ninguna', 'Cómputo', 'En revisión'),
-(3, 'Makers', 'Chiapa 2 #229', 'Luis Martínez', 'Ninguna', 'Impresiones 3D', 'Dañado'),
+(3, 'Laboratorio de makers', 'Chiapa 2 #229', 'Luis Martínez', 'Ninguna', 'Impresiones 3D', 'Dañado'),
 (4, 'Laboratorio avanzado', 'Chiapa 2 #227', 'Luis Martínez', 'Ninguna', 'Soldadura', 'Disponible'),
-(7, 'Prueba', 'Chiapa 2 #226', 'Juan Trujillo', 'En buen estado', 'Investigación', 'Disponible'),
-(8, 'Prueba 3', '|a', 'as', '', '56', 'No disponible');
+(5, 'Laboratorio de prototipado', 'Chiapa 2 #226', 'Juan Trujillo', 'En buen estado', 'Investigación', 'Disponible'),
+(6, 'Laboratorio de metrologia eléctrica y dimensional', 'Chiapa 1 #102', '', 'Ninguna', 'Metrologia', 'Disponible'),
+(7, 'Laboratorio de física 2', 'Chiapa 1 #105', '', 'Ninguna', 'Física', 'Disponible'),
+(8, 'Laboratorio de química', 'Chiapa 1 #104', '', 'Ninguna', 'Química', 'Disponible'),
+(9, 'Laboratorio de física 2', 'Chiapa 1 #105', '', 'Ninguna', 'Física', 'Disponible'),
+(10, 'Laboratorio de vehiculos eléctricos', 'Chiapa 1 #106', '', 'Ninguna', 'Vehiculos', 'Disponible'),
+(11, 'Laboratorio de vehiculos conectados', 'Chiapa 1 #106A', '', 'Ninguna', 'Vehiculos', 'Disponible'),
+(12, 'Laboratorio de vehiculos autónomos', 'Chiapa 1 #106B', '', 'Ninguna', 'Vehiculos', 'Disponible'),
+(13, 'Cómputo forense', 'Chiapa 2 #225', '', 'Ninguna', 'Cómputo', 'Disponible'),
+(14, 'Laboratorio de internet de las cosas', 'Chiapa 2 #226', '', 'Ninguna', 'Cómputo', 'Disponible'),
+(15, 'Laboratorio de automatización industrial', 'Chiapa 1 #105', '', 'Ninguna', 'Automatización', 'Disponible'),
+(16, 'Laboratorio de  mecatrónica', 'Chiapa 2 #119', '', 'Ninguna', 'Mecatrónica', 'Disponible'),
+(17, 'Laboratorio de manufactura', 'Chiapa 2 #115', '', 'Ninguna', 'Manufactura', 'Disponible'),
+(18, 'Laboratorio de materiales', 'Chiapa 2 #103A', '', 'Ninguna', 'Materiales', 'Disponible');
 
 -- --------------------------------------------------------
 
@@ -174,12 +186,8 @@ CREATE TABLE `prestamo` (
 --
 
 INSERT INTO `prestamo` (`id_prestamo`, `fecha_prestamo`, `hora_inicio_prestamo`, `hora_fin_prestamo`, `observacion_prestamo`, `id_laboratorio`, `id_equipo`, `id_usuario`) VALUES
-(1, '2023-05-08', '08:00:00', '10:00:00', '', 1, 1, 8),
-(2, '2023-05-17', '08:00:00', '10:00:00', 'Ninguna', 4, 4, 8),
-(3, '2023-05-15', '10:00:00', '12:00:00', 'Encontre un equipo dañado', 2, 4, 8),
-(4, '2023-05-18', '10:00:00', '09:00:00', '', 1, 1, 12),
-(6, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 12),
-(9, '2023-05-24', '10:00:00', '12:00:00', '', 1, 3, 1);
+(1, '2023-05-18', '10:00:00', '09:00:00', '', 1, 1, 5),
+(2, '2023-05-18', '10:00:00', '12:00:00', 'Requiero que los equipos cuenten con python 3.0 instalado', 1, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -207,14 +215,10 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `matricula`, `nombre_usuario`, `apellidos_usuario`, `correo_usuario`, `telefono_usuario`, `password_usuario`, `nss_usuario`, `id_carrera`, `rol`) VALUES
 (1, '202267533', 'Diego Angel', 'San Martín Gómez', 'diego.sanmarting@alumno.buap.mx', '2212535186', '$2y$10$3UkjMwW3alhq4zXe90ypaeaJYPFlsHktmDzLe/lvNH8z.deKaOj1K', '9489561', 1, '0'),
 (2, '202223895', 'Ernesto', 'Hernández Velázquez', 'ernestoH@ernesto', '221321564', '$2y$10$Peppfrhd.SL/u1di89i22eo9ykHlgSVgV4mgIK6TW4QiVPYOpD7Hq', '89465156', 1, '2'),
-(3, '202244929', 'Diana Sandra', 'Morales García', 'diana@diana', '2221356456', '1234', '99987863', 1, '3'),
-(4, '202224664', 'Ernesto', 'Arroyo Reyes', 'ernestoA@ernestoA', '222135786', '1234', '99984743', 1, '3'),
-(5, '202253071', 'María Zacil', 'Sánchez Juárez', 'Zacil@zacil', '221595644', '1234', '99987383', 1, '2'),
-(6, '202238868', 'David', 'Flores Jerónimo', 'david@david', '222139846', '1234', '99936163', 2, '2'),
-(8, '201907831', 'Diego', 'San Martin', 'diego.sanmartin@alumno.buap', '2221568798', '$2y$10$M/1I9RHTK92w9544FaIsBudTD3thuE/IMbLTongykintRokRlTOOy', '98765435', 1, '3'),
-(10, 'admin', 'Admin', 'istrador', 'admin@admin', '2212515687', '$2y$10$5MfDmQruug30BivgM76JCeuX2Ri9z.ZZAjj9iINpUsK.SkxHinfSG', '', 1, '0'),
-(11, 'Encargado', 'Encargado', 'prueba', 'encargado@prueba', '2212558694', '$2y$10$H783uSp8NfIz52GImtCwxuHKi8FGgX.yp9haPDOp1uf2HJoaDPdOm', '', 1, '1'),
-(12, 'NSS529640', 'Diana Ivone', 'Tapia López', 'ivone.tapia@correo.buap.mx', '2224860704', '$2y$10$uJirFZxDnf8J1Tt2CD4H7uoA0kH5LK/NA80hoDs6l54QWeFdFMwf2', '8745634', 1, '2');
+(3, 'admin', 'Admin', 'istrador', 'admin@admin', '2212515687', '$2y$10$5MfDmQruug30BivgM76JCeuX2Ri9z.ZZAjj9iINpUsK.SkxHinfSG', '', 1, '0'),
+(4, 'Encargado', 'Encargado', 'prueba', 'encargado@prueba', '2212558694', '$2y$10$H783uSp8NfIz52GImtCwxuHKi8FGgX.yp9haPDOp1uf2HJoaDPdOm', '', 1, '1'),
+(5, 'NSS529640', 'Diana Ivone', 'Tapia López', 'ivone.tapia@correo.buap.mx', '2224860704', '$2y$10$uJirFZxDnf8J1Tt2CD4H7uoA0kH5LK/NA80hoDs6l54QWeFdFMwf2', '8745634', 1, '2'),
+(6, '202224665', 'Ernesto', 'Arroyo Reyes', 'ernesto.arroyo@gmail.com', '2231476767', '$2y$10$pCiasZHzeSex4ij/0cr95uh/MkNlcW1aokYWSL0jRRfiMF4ypgzra', '2131231223', 1, '3');
 
 -- --------------------------------------------------------
 
@@ -235,11 +239,8 @@ CREATE TABLE `usuario_capacitacion` (
 --
 
 INSERT INTO `usuario_capacitacion` (`id_usuario_capacitacion`, `fecha_fin_capacitacion`, `tiempo_valido_capacitacion`, `id_usuario`, `id_capacitacion`) VALUES
-(1, '2023-04-12', 1, 5, 9),
-(3, '2023-05-31', 8, 3, 7),
-(4, '2023-05-26', 2, 1, 7),
-(6, '2023-05-17', 3, 8, 2),
-(7, '2023-05-01', 2, 8, 10);
+(1, '2023-05-26', 2, 1, 7),
+(2, '2023-05-23', 2, 6, 7);
 
 --
 -- Índices para tablas volcadas
@@ -329,31 +330,31 @@ ALTER TABLE `equipo`
 -- AUTO_INCREMENT de la tabla `equipo_capacitacion`
 --
 ALTER TABLE `equipo_capacitacion`
-  MODIFY `id_equipo_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_equipo_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `laboratorio`
 --
 ALTER TABLE `laboratorio`
-  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
 --
 ALTER TABLE `prestamo`
-  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_prestamo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_capacitacion`
 --
 ALTER TABLE `usuario_capacitacion`
-  MODIFY `id_usuario_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_usuario_capacitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

@@ -150,11 +150,11 @@ if($user->get('rol')==2 || $user->get('rol')== 3):
                       </div>
                       <div style="margin-bottom:10px;">
                         <button type="button" id="btnMostrarP" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ver mis solicitudes de préstamo</button>
-                        <button type="button" id="btnOcultarP" style="display:none; border-radius: 20px;" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ocultar mis préstamos</button>
+                        <button type="button" id="btnOcultarP" style="display:none; border-radius: 20px;" class="btn btn-info" data-toggle="collapse" data-target="#prestamos">Ocultar mis solicitudes de préstamos</button>
                       </div>
                       <div style="margin-bottom:10px;"> 
                         <button type="button" id="btnMostrarC" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ver mis capacitaciones</button>
-                        <button type="button" id="btnOcultarC" style="display:none; border-radius: 20px;" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ocultar mis cursos</button>
+                        <button type="button" id="btnOcultarC" style="display:none; border-radius: 20px;" class="btn btn-info" data-toggle="collapse" data-target="#capacitacion">Ocultar mis capacitaciones</button>
                       </div>
                     </div>
                   </div>

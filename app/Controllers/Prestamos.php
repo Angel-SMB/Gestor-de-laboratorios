@@ -71,9 +71,6 @@ class Prestamos extends Controller{
         foreach($laboratorio_disponible as $laboratorio_disponibles){
             if($laboratorio_disponibles['estado_laboratorio'] == "Disponible"){
                 $disponibilidad_lab = True;
-                // $actualizar=[
-                //     'estado_laboratorio' => 'No disponible',
-                // ];
             }else{
                 $disponibilidad_lab = False;
             }
@@ -108,13 +105,19 @@ class Prestamos extends Controller{
             ->countAllResults();
 
 
-        if($conteo == $conteo_usuario && $equipo_extraido == $datos['id_equipo'] || $datos['id_equipo'] == 6 && $disponibilidad_lab == True){
+            $datos_usuario = $cap_usuario->table('usuario')
+            ->where('usuario.id_usuario', $datos['id_usuario'])
+            ->get()
+            ->getResult();
+            foreach ($datos_usuario as $usuario) {
+                $rol_extraido = $usuario->rol ;
+            }
+
+        if($conteo == $conteo_usuario && $equipo_extraido == $datos['id_equipo'] && $disponibilidad_lab == True || $datos['id_equipo'] == 6 || $conteo == 0){
         $respuesta=$user->insert($datos);
         $session = session();
         $session->setFlashdata('success', 'El préstamo ha sido creado con éxito.');
 
-        // $id_lab=$datos['id_laboratorio'];
-        // $lab->update($id_lab, $actualizar);
         if($sessions->get('rol')==0 || $sessions->get('rol')==1){
             return redirect()->to(base_url('prestamos'));
         }else{
@@ -127,7 +130,7 @@ class Prestamos extends Controller{
             return view('errors/error_laboratorios', ['estado'=> $laboratorio_disponible]);
         }else{
         return view('errors/error_capacitaciones',['nombres'=>$nombres, 'datos_cap'=>$datos_cap]);     
-    }
+        }
     }
 }
 
